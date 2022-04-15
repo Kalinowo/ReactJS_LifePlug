@@ -1,0 +1,1941 @@
+@charset "UTF-8";
+:root {
+  --background: #ffffff;
+  --background-secondary: #ffffff;
+  --background-tertiary: #2830487c;
+  --text-primary: #000;
+  --accent: #8e05c2;
+  --border: #808080;
+  --form-bg: #fff;
+}
+
+[data-theme=dark] {
+  --background: #000;
+  --background-secondary: #3a3a3c;
+  --background-tertiary: #283048c4;
+  --text-primary: #fff;
+  --text-secondary: rgb(231, 142, 59);
+  --accent: #8e05c2;
+  --border: #808080;
+  --form-bg: #191919;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+a:hover {
+  text-decoration: none;
+}
+
+ul {
+  list-style-type: none;
+}
+
+button {
+  border: none;
+}
+
+button:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.blackCover {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(26, 26, 26, 0.2);
+  z-index: 1060;
+  overflow-x: hidden;
+  overflow-y: auto;
+  padding: 1px 0;
+}
+
+/*Scrollbars*/
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgb(162, 192, 154);
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(94, 133, 96);
+}
+
+.successOuter {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.successOuter .successContent {
+  color: red;
+  font-weight: bold;
+  background: lightgray;
+  width: 100%;
+  height: 60px;
+  border: solid black;
+  text-align: center;
+  line-height: 60px;
+}
+
+.navbar-light {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: var(--background-tertiary);
+  text-shadow: 0px 1px 2px black;
+  z-index: 1020;
+}
+.navbar-light .navbar-brand {
+  color: white;
+  font-size: 35px;
+  font-family: "NTR", sans-serif;
+  transform: scale(1.2);
+  cursor: pointer;
+  filter: drop-shadow(1px 2px 1px black);
+}
+.navbar-light .navbar-brand:focus {
+  color: white;
+}
+.navbar-light .navbar-brand:hover {
+  color: white;
+}
+.navbar-light .navbar-toggler {
+  border: none;
+}
+.navbar-light button[class=navbar-toggler] .navbar-toggler-awesome.fas.fa-bars {
+  display: none;
+}
+.navbar-light button[class="navbar-toggler collapsed"] .navbar-toggler-awesome.fas.fa-times {
+  display: none;
+}
+.navbar-light button:hover {
+  color: #63db4b;
+}
+.navbar-light #basic-navbar-nav .navbar-nav {
+  position: relative;
+  top: 3px;
+  color: white;
+  width: 100%;
+  align-items: center;
+  font-family: "NTR", sans-serif;
+  font-size: 20px;
+}
+.navbar-light #basic-navbar-nav .navbar-nav a {
+  color: white;
+  padding: 8px;
+  z-index: 1063;
+}
+.navbar-light #basic-navbar-nav .navbar-nav a .active {
+  color: white;
+}
+.navbar-light #basic-navbar-nav .navbar-nav a:active {
+  color: white;
+}
+.navbar-light #basic-navbar-nav .navbar-nav a:hover {
+  color: rgb(196, 255, 172);
+}
+.navbar-light #basic-navbar-nav .navbar-nav .navbar-hover {
+  position: absolute;
+  bottom: 2px;
+  height: 5px;
+  opacity: 0;
+  background: #a3ffa0;
+  box-shadow: 0 0 4px 0px #63db4b;
+  z-index: 0;
+  transition: 2s;
+}
+.navbar-light #basic-navbar-nav .navbar-nav a:nth-child(1):hover ~ .navbar-hover {
+  opacity: 1;
+  width: 55px;
+  left: 5px;
+}
+.navbar-light #basic-navbar-nav .navbar-nav a:nth-child(2):hover ~ .navbar-hover {
+  opacity: 1;
+  width: 90px;
+  left: 65px;
+}
+.navbar-light #basic-navbar-nav .navbar-nav a:nth-child(3):hover ~ .navbar-hover {
+  opacity: 1;
+  width: 60px;
+  left: 160px;
+}
+.navbar-light #basic-navbar-nav .navbar-nav .navRight {
+  position: absolute;
+  right: 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.navbar-light #basic-navbar-nav .navbar-nav .navRight .themeSwitch {
+  background: lightgray;
+  border-radius: 25px;
+  margin: 0;
+  padding: 0.5rem 1rem;
+  width: 72px;
+  transition: 1s;
+  transform: scale(0.6) translate(-25px, -7px);
+  overflow: hidden;
+  box-shadow: inset 0px 0px 8px black;
+  cursor: pointer;
+}
+.navbar-light #basic-navbar-nav .navbar-nav .navRight .themeSwitch input {
+  position: relative;
+  top: 2px;
+  left: -50px;
+}
+.navbar-light #basic-navbar-nav .navbar-nav .navRight .themeSwitch input::before {
+  content: "";
+  position: absolute;
+  top: -8px;
+  left: 40px;
+  background: rgb(128, 128, 128);
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  transition: 1s;
+}
+.navbar-light #basic-navbar-nav .navbar-nav .navRight .themeSwitch input[data-theme=dark]::before {
+  content: "";
+  position: absolute;
+  top: -8px;
+  left: 70px;
+  background: rgb(128, 128, 128);
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: black;
+}
+.navbar-light #basic-navbar-nav .navbar-nav .navRight .themeSwitch span {
+  display: flex;
+  position: absolute;
+  top: 13px;
+  left: 6px;
+  width: 60px;
+  height: 20px;
+}
+.navbar-light #basic-navbar-nav .navbar-nav .navRight .themeSwitch span img:nth-child(1) {
+  width: 100%;
+  height: 100%;
+}
+.navbar-light #basic-navbar-nav .navbar-nav .navRight .themeSwitch span img:nth-child(2) {
+  width: 100%;
+  height: 100%;
+}
+@media screen and (max-width: 767px) {
+  .navbar-light #basic-navbar-nav .navbar-nav .navRight {
+    position: relative;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+@media screen and (max-width: 767px) {
+  .navbar-light #basic-navbar-nav .navbar-nav {
+    align-items: flex-start;
+  }
+  .navbar-light #basic-navbar-nav .navbar-nav a:nth-child(1):hover ~ .navbar-hover {
+    opacity: 0;
+    width: 60px;
+    left: 0;
+  }
+  .navbar-light #basic-navbar-nav .navbar-nav a:nth-child(2):hover ~ .navbar-hover {
+    opacity: 0;
+    width: 75px;
+    left: 60px;
+  }
+  .navbar-light #basic-navbar-nav .navbar-nav a:nth-child(3):hover ~ .navbar-hover {
+    opacity: 0;
+    width: 57px;
+    left: 140px;
+  }
+}
+
+.testOuter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1060;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+.testOuter .entrancePageOuter {
+  width: 100%;
+  max-width: 1500px;
+  margin: auto;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.testOuter .entrancePageOuter .filterWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(to right, #414345, #232526);
+  padding: 5px;
+  max-height: 510px;
+}
+.testOuter .entrancePageOuter .filterWrapper .entrancePageBg {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  width: 800px;
+  height: 0;
+  padding-bottom: 62.5%;
+}
+.testOuter .entrancePageOuter .filterWrapper .entrancePageBg .backgroundImage {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+.testOuter .entrancePageOuter .filterWrapper .entrancePageBg .entrancePageBgFilter {
+  position: absolute;
+  top: 0;
+  background: rgba(0, 0, 0, 0.2);
+  width: 800px;
+  height: 500px;
+}
+.testOuter .entrancePageOuter .filterWrapper .loginBtnOuter {
+  position: absolute;
+  background: linear-gradient(to right, #283048, #859398);
+  padding: 10px;
+  border: solid;
+  border-radius: 5px;
+  height: auto;
+}
+.testOuter .entrancePageOuter .filterWrapper .loginBtnOuter .loginWrapper {
+  position: relative;
+}
+.testOuter .entrancePageOuter .filterWrapper .loginBtnOuter .loginWrapper .title {
+  color: white;
+  font-size: 80px;
+  line-height: 100px;
+  text-shadow: 3px 3px 2px black;
+  font-family: "NTR", sans-serif;
+  filter: drop-shadow(1px 2px 1px black);
+}
+.testOuter .entrancePageOuter .filterWrapper .loginBtnOuter .loginWrapper .loginBtn {
+  position: relative;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  border: solid black;
+  height: 30px;
+}
+.testOuter .entrancePageOuter .filterWrapper .loginBtnOuter .loginWrapper .loginBtn:hover .btn2 {
+  left: 0px;
+}
+.testOuter .entrancePageOuter .filterWrapper .loginBtnOuter .loginWrapper .loginBtn:hover .btn1 {
+  color: black;
+}
+.testOuter .entrancePageOuter .filterWrapper .loginBtnOuter .loginWrapper .loginBtn .btn1 {
+  background: transparent;
+  color: white;
+  width: 100%;
+  height: 30px;
+  transition: all 0.5s ease-out;
+  font-weight: bold;
+  z-index: 1;
+}
+.testOuter .entrancePageOuter .filterWrapper .loginBtnOuter .loginWrapper .loginBtn .btn2 {
+  position: absolute;
+  top: 0px;
+  left: -240px;
+  height: 100%;
+  width: 100%;
+  max-width: 248.5px;
+  background: linear-gradient(0deg, #a8ff78, #8be069, #6ab04d, #8be069, #a8ff78);
+  background-size: 200% 100%;
+  transition: all 0.5s ease-out;
+  z-index: 0;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+form .formGroup input {
+  border-radius: 100px;
+  padding: 6px 12px;
+  height: 34px;
+  width: 100%;
+  outline: none;
+  border: solid gray 2px;
+  box-shadow: 2px 2px 1px rgb(41, 41, 41);
+  margin: 0 0 10px 0;
+}
+
+.signInCloseBtn {
+  position: absolute;
+  top: 0.8rem;
+  right: 0.8rem;
+  color: white;
+  font-size: 1.2rem;
+  cursor: pointer;
+  text-shadow: 2px 2px 2px black;
+}
+.signInCloseBtn:hover {
+  color: red;
+}
+
+.signInOuter {
+  position: relative;
+  top: 50px;
+  width: 300px;
+  height: 500px;
+}
+
+.signInBox {
+  background: white;
+  height: auto;
+  width: 300px;
+  border: solid #283048;
+  border-width: 4px;
+  border-radius: 5px;
+  z-index: 1;
+}
+.signInBox .nav-tabs {
+  background: linear-gradient(to right, #283048, #859398);
+}
+.signInBox .nav-tabs .nav-link {
+  color: white;
+  border: none;
+  border-top-left-radius: 0;
+}
+.signInBox .nav-tabs .nav-link.active {
+  color: rgb(93, 177, 255);
+}
+.signInBox .nav-tabs .nav-link:hover {
+  color: rgb(93, 177, 255);
+}
+.signInBox .tab-content {
+  padding: 0.6rem;
+}
+.signInBox .signInTitleBox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 0.5rem;
+  height: 3rem;
+}
+.signInBox .signInTitleBox .signInTitle {
+  font-size: 2rem;
+}
+.signInBox .submitBox {
+  position: relative;
+  width: 100%;
+  z-index: 0;
+}
+.signInBox .submitBox:before {
+  content: "";
+  position: absolute;
+  left: -1px;
+  bottom: -2px;
+  height: 100%;
+  width: 61%;
+  padding: 10px;
+  z-index: -1;
+  border: solid black 10px;
+  background-color: black;
+  border-radius: 5px;
+}
+.signInBox .submitBox:after {
+  content: "";
+  position: absolute;
+  right: -0.8px;
+  bottom: -2px;
+  height: 100%;
+  width: 37.5%;
+  padding: 10px;
+  z-index: -1;
+  border: solid black 10px;
+  background-color: black;
+  border-radius: 5px;
+}
+.signInBox .submitBox .submitBtn {
+  position: relative;
+  width: 60%;
+  height: 35px;
+  margin-right: 10px;
+  background-color: #0971d3;
+  color: white;
+  outline: none;
+  border-radius: 5px;
+  text-shadow: 0px 1px 2px black;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), inset 0 -0.1em 0 0.1em #073561;
+}
+.signInBox .submitBox .submitBtn:after {
+  content: "";
+  position: absolute;
+  left: 3px;
+  top: 0.1px;
+  border: solid rgba(255, 248, 239, 0.1) 2px;
+  background: transparent;
+  width: 96.5%;
+  height: 90%;
+  border-radius: 5px;
+}
+.signInBox .submitBox .submitBtn:active {
+  background-color: #0b61b3;
+  box-shadow: none;
+}
+.signInBox .submitBox .submitBtn:active:after {
+  border: none;
+}
+.signInBox .submitBox .submitCancel {
+  position: relative;
+  width: 36%;
+  height: 35px;
+  background-color: lightgray;
+  color: black;
+  outline: none;
+  border-radius: 5px;
+  text-shadow: 0px 1px 2px black;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), inset 0 -0.1em 0 0.1em #5a5a5a;
+}
+.signInBox .submitBox .submitCancel:after {
+  content: "";
+  position: absolute;
+  right: 2px;
+  top: 0.1px;
+  border: solid rgba(255, 248, 239, 0.1) 2px;
+  background: transparent;
+  width: 95%;
+  height: 90%;
+  border-radius: 5px;
+}
+.signInBox .submitBox .submitCancel:active {
+  background-color: rgb(163, 163, 163);
+  box-shadow: none;
+}
+.signInBox .submitBox .submitCancel:active:after {
+  border: none;
+}
+
+.signInCheckBox label {
+  margin-right: 1rem;
+}
+
+.registerTitleBox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 0.5rem;
+  height: 3rem;
+}
+.registerTitleBox .registerTitle {
+  font-size: 2rem;
+}
+
+.registerCheckBox {
+  width: 100%;
+  height: 3rem;
+}
+.registerCheckBox label {
+  padding-left: 0.5rem;
+}
+
+.alertMessage {
+  color: red;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.registerBtnBox {
+  position: relative;
+  width: 100%;
+  z-index: 0;
+}
+.registerBtnBox:before {
+  content: "";
+  position: absolute;
+  left: 1px;
+  bottom: -2px;
+  height: 100%;
+  width: 99%;
+  padding: 10px;
+  z-index: -1;
+  border: solid black 10px;
+  background-color: black;
+  border-radius: 5px;
+}
+.registerBtnBox .registerBtn {
+  position: relative;
+  top: 0;
+  left: 3px;
+  width: 98%;
+  height: 35px;
+  background-color: #0971d3;
+  color: white;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  text-shadow: 0px 1px 2px black;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), inset 0 -0.1em 0 0.1em #073561;
+}
+.registerBtnBox .registerBtn:after {
+  content: "";
+  position: absolute;
+  left: 2px;
+  top: 0.1px;
+  border: solid rgba(255, 248, 239, 0.1) 2px;
+  background: transparent;
+  width: 98.5%;
+  height: 90%;
+  border-radius: 5px;
+}
+.registerBtnBox .registerBtn:active {
+  background-color: #0b61b3;
+  box-shadow: none;
+}
+.registerBtnBox .registerBtn:active:after {
+  border: none;
+}
+
+.error404 {
+  position: relative;
+  top: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+.error404 .imageOuter404 {
+  position: relative;
+  border: solid;
+}
+.error404 .imageOuter404 .image {
+  width: 100%;
+  height: auto;
+}
+.error404 .imageOuter404 .outer404 {
+  position: absolute;
+  top: 70px;
+  left: 90px;
+  width: 200px;
+  height: auto;
+}
+.error404 .imageOuter404 .outer404 .statusCode {
+  width: auto;
+  height: auto;
+  font-size: 80px;
+}
+.error404 .imageOuter404 .outer404 .statusCode .description {
+  position: relative;
+  left: -20px;
+  font-size: 25px;
+  font-weight: bold;
+  margin-top: -20px;
+}
+
+.homePageOuter {
+  position: relative;
+  top: 73px;
+  background: var(--background);
+  height: 90vh;
+}
+.homePageOuter .searchOuter {
+  position: relative;
+  top: 5px;
+  text-align: center;
+  margin: 5px 5px 15px 5px;
+  height: 40px;
+  border-radius: 5px;
+  overflow: hidden;
+}
+.homePageOuter .searchOuter .searchForm {
+  background: var(--background-secondary);
+  color: black;
+  width: 100%;
+  border: none;
+  outline: none;
+  height: 100%;
+  padding: 0 10px;
+  border: solid gray;
+}
+.homePageOuter .searchOuter .searchForm:focus {
+  background: white;
+}
+.homePageOuter .searchOuter .searchIconBtn {
+  position: absolute;
+  color: white;
+  top: 0px;
+  right: 0px;
+  width: 50px;
+  height: 100%;
+  outline: none;
+  background: gray;
+  transition: 1s;
+}
+.homePageOuter .searchOuter .searchIconBtn:hover {
+  color: rgb(196, 255, 172);
+}
+.homePageOuter .videoTitleBox {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  top: 0;
+  height: 100%;
+  width: auto;
+  background: var(--background);
+}
+.homePageOuter .videoTitleBox .title {
+  color: var(--text-primary);
+  font-size: 25px;
+}
+.homePageOuter .animeListOuter {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: wrap;
+  background: var(--background);
+}
+.homePageOuter .animeListOuter .animeListBox {
+  display: flex;
+  position: relative;
+  width: calc(20% - 16px);
+  margin: 0 8px 5px;
+  flex-direction: column;
+  justify-content: center;
+  border: solid black;
+  border-radius: 8px;
+  box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.6);
+  transition: 0.5s;
+  overflow: hidden;
+}
+@media (max-width: 768px) {
+  .homePageOuter .animeListOuter .animeListBox {
+    width: calc(33% - 14px);
+  }
+}
+@media (max-width: 600px) {
+  .homePageOuter .animeListOuter .animeListBox {
+    width: calc(50% - 16px);
+  }
+}
+.homePageOuter .animeListOuter .animeListBox:hover {
+  box-shadow: 0px 0px 6px 2px white;
+}
+.homePageOuter .animeListOuter .animeListBox .animeListImgBox {
+  position: relative;
+  padding-bottom: 55%;
+  border-radius: 5px 5px 0 0;
+  width: 100%;
+  height: 0;
+  overflow: hidden;
+}
+.homePageOuter .animeListOuter .animeListBox .animeListImgBox .img {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transition: 0.5s;
+}
+.homePageOuter .animeListOuter .animeListBox .animeListImgBox .latestEpisode {
+  position: absolute;
+  top: 0;
+  left: 4px;
+  font-size: 14px;
+  font-weight: bold;
+  background: rgba(100, 100, 100, 0.4);
+  color: white;
+  text-shadow: 1px 1px 2px black;
+  padding: 0 5px 0 5px;
+  border-radius: 5px;
+}
+.homePageOuter .animeListOuter .animeListBox .animeListImgBox .views {
+  position: absolute;
+  bottom: 0;
+  right: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  font-size: 14px;
+  background: rgba(100, 100, 100, 0.4);
+  color: white;
+  text-shadow: 1px 1px 2px black;
+  padding: 0 5px 0 5px;
+  border-radius: 5px;
+}
+.homePageOuter .animeListOuter .animeListBox .animeListImgBox .views .numbers {
+  margin-left: 3px;
+}
+.homePageOuter .animeListOuter .animeListBox .animeNameBox {
+  display: flex;
+  flex-direction: column;
+  border-radius: 0 0 5px 5px;
+  background: var(--background-secondary);
+  color: var(--text-primary);
+  border-top: solid black;
+  text-align: center;
+  font-family: "Noto Sans TC", sans-serif;
+  font-weight: bold;
+  padding: 0 5px 0;
+}
+.homePageOuter .animeListOuter .animeListBox .animeNameBox .name {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.homePageOuter .animeListOuter .animeListBox:hover .img {
+  transform: scale(1.08);
+}
+.homePageOuter .animeListOuter .animeListBox:hover {
+  color: black;
+}
+
+.notFound {
+  color: var(--text-primary);
+  margin-top: 10px;
+  margin-left: 10px;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.AdminPostBtnOuter {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  top: 0 px;
+  margin-bottom: 5px;
+  height: auto;
+  width: 100%;
+}
+.AdminPostBtnOuter .postBtn {
+  width: 90%;
+  height: auto;
+  font-size: 25px;
+  color: white;
+  background: gray;
+  padding: 0 5px 5px 5px;
+  outline: none;
+  border-radius: 5px;
+  text-shadow: 0px 1px 2px black;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), inset 0 -0.1em 0 0.1em #5a5a5a;
+}
+.AdminPostBtnOuter .postBtn:hover {
+  color: #fff;
+  text-shadow: 0 0 7px #fff, 0 0 10px #fff;
+}
+
+.profileOuter {
+  position: relative;
+  top: 78px;
+  background: var(--background);
+  width: 100%;
+  height: 90vh;
+  margin: 0 auto;
+}
+.profileOuter .profileBox {
+  display: flex;
+  flex-wrap: wrap;
+  background: var(--background-secondary);
+}
+@media screen and (max-width: 767px) {
+  .profileOuter .profileBox {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+.profileOuter .profileBox .profilePicOuter {
+  position: relative;
+  top: 0;
+  padding-bottom: 20%;
+  border-radius: 5px;
+  flex-basis: 30%;
+  height: 0;
+  border: solid black;
+  overflow: hidden;
+  margin: 10px;
+}
+@media screen and (max-width: 767px) {
+  .profileOuter .profileBox .profilePicOuter {
+    padding-bottom: 25%;
+    padding-right: 35%;
+  }
+}
+.profileOuter .profileBox .profilePicOuter .picture {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.profileOuter .profileBox .profilePicOuter .updatePicBtn {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: auto;
+  height: auto;
+  font-size: 18px;
+  color: white;
+  background: gray;
+  padding: 0 5px 0 5px;
+  outline: none;
+  border-radius: 5px;
+  text-shadow: 0px 1px 2px black;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), inset 0 -0.1em 0 0.1em #5a5a5a;
+}
+.profileOuter .profileBox .profilePicOuter .updatePicBtn:active {
+  background-color: rgba(40, 48, 72, 0.6784313725);
+  box-shadow: none;
+}
+.profileOuter .profileBox .profilePicOuter .updatePicBtn:hover {
+  color: rgb(196, 255, 172);
+}
+.profileOuter .profileBox .profileInfoOuter {
+  position: relative;
+  top: 0;
+  margin-top: 10px;
+  flex-grow: 1;
+}
+@media screen and (max-width: 767px) {
+  .profileOuter .profileBox .profileInfoOuter {
+    margin-top: 0px;
+    margin-bottom: 10px;
+  }
+}
+.profileOuter .profileBox .profileInfoOuter .profileName {
+  color: var(--text-primary);
+  font-size: 20px;
+  font-weight: bold;
+  word-break: break-all;
+}
+.profileOuter .profileBox .profileInfoOuter .profileName .name {
+  font-weight: lighter;
+  color: var(--text-primary);
+  word-break: break-all;
+  font-size: 20px;
+}
+.profileOuter .profileBox .profileInfoOuter .profileName .updateNameBtn {
+  margin-left: 5px;
+  background: gray;
+  color: white;
+  width: auto;
+  height: auto;
+  padding: 0 5px 0 5px;
+  outline: none;
+  border-radius: 5px;
+  text-shadow: 0px 1px 2px black;
+  box-shadow: inset 0 1px 0 var(--background-tertiary), inset 0 -0.1em 0 0.1em var(--background-tertiary);
+}
+.profileOuter .profileBox .profileInfoOuter .profileName .updateNameBtn:active {
+  background-color: rgba(40, 48, 72, 0.6784313725);
+  box-shadow: none;
+}
+.profileOuter .profileBox .profileInfoOuter .profileName .updateNameBtn:hover {
+  color: rgb(196, 255, 172);
+}
+.profileOuter .profileBox .updateNameOuter {
+  position: relative;
+  top: 0;
+  left: 0;
+  margin-top: 5px;
+  width: 260px;
+  border: solid gray;
+  border-radius: 5px;
+  overflow: hidden;
+}
+.profileOuter .profileBox .updateNameOuter .updateForm {
+  border: none;
+  outline: none;
+  padding: 0 10px 0 5px;
+}
+.profileOuter .profileBox .updateNameOuter .updateBtn {
+  position: absolute;
+  color: white;
+  top: 0px;
+  right: 0px;
+  width: 50px;
+  height: auto;
+  border: none;
+  outline: none;
+  background: gray;
+  text-shadow: 0px 1px 2px black;
+}
+.profileOuter .profileBox .updateNameOuter .updateBtn:hover {
+  color: rgb(196, 255, 172);
+}
+
+.selectDPOuter {
+  position: relative;
+  width: 100%;
+  height: auto;
+  max-width: 600px;
+}
+.selectDPOuter .innerOuter {
+  display: relative;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.selectDPOuter .innerOuter .picOuter {
+  position: relative;
+  top: 0;
+  padding-bottom: 30%;
+  width: 100%;
+  height: 0;
+  flex-basis: 50%;
+  max-height: 100px;
+  border: solid black;
+  overflow: hidden;
+  cursor: pointer;
+}
+.selectDPOuter .innerOuter .picOuter .picture {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.selectDPOuter .innerOuter .picOuter:hover {
+  border: solid white;
+}
+
+.profileSuccessMsg {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  background: rgba(40, 48, 72, 0.4862745098);
+  color: white;
+  text-shadow: 0px 1px 2px black;
+  width: 100%;
+  height: auto;
+  font-size: 20px;
+}
+
+.postOuter {
+  background: rgb(59, 59, 59);
+  position: absolute;
+  top: 10%;
+  width: 300px;
+  height: auto;
+  border: solid black;
+  margin: 0 auto;
+}
+.postOuter .formTitle {
+  font-size: 20px;
+  margin: 10px 0;
+  color: #fff;
+  text-shadow: 0 0 7px #fff, 0 0 10px #fff;
+}
+.postOuter form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+.postOuter form .formGroup2 {
+  position: relative;
+}
+.postOuter form .formGroup2 input {
+  width: 100%;
+  padding: 10px 0 0 0;
+  font-size: 16px;
+  color: #fff;
+  margin-bottom: 10px;
+  border: none;
+  border-bottom: 1px solid #fff;
+  outline: none;
+  background: transparent;
+}
+.postOuter form .formGroup2 input:focus ~ label, .postOuter form .formGroup2 input:active ~ label {
+  top: -15px;
+  left: 0;
+  color: rgb(238, 248, 255);
+  font-size: 12px;
+}
+.postOuter form .formGroup2 label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 10px 0;
+  font-size: 16px;
+  color: #fff;
+  pointer-events: none;
+  transition: 0.5s;
+}
+.postOuter form textarea {
+  width: 100%;
+  padding: 10px;
+  max-width: 100%;
+  line-height: 1.5;
+  border-radius: 5px;
+  border: 2px solid gray;
+  box-shadow: 2px 2px 1px rgb(41, 41, 41);
+  margin: 0 0 5px 0;
+}
+.postOuter form textarea:focus-visible {
+  outline: none;
+}
+.postOuter .submitBtn {
+  position: relative;
+  top: 0;
+  width: 90%;
+  height: auto;
+  font-size: 20px;
+  color: white;
+  background: gray;
+  padding: 0 5px 0 5px;
+  outline: none;
+  border-radius: 5px;
+  text-shadow: 0px 1px 2px black;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), inset 0 -0.1em 0 0.1em #5a5a5a;
+  margin-bottom: 10px;
+}
+.postOuter .submitBtn:hover {
+  color: #fff;
+  text-shadow: 0 0 7px #fff, 0 0 10px #fff;
+}
+
+.uploadEpisodeOuter {
+  position: relative;
+  bottom: 15px;
+}
+.uploadEpisodeOuter .circle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 0;
+  width: 30px;
+  height: 30px;
+  background: white;
+  border: solid gray;
+  border-radius: 50%;
+  margin-left: 5px;
+  cursor: pointer;
+}
+.uploadEpisodeOuter .circle .fas.fa-plus {
+  color: gray;
+  font-size: 17px;
+}
+.uploadEpisodeOuter .circle:hover {
+  border: solid #93d17a;
+}
+.uploadEpisodeOuter .circle:hover .fas.fa-plus {
+  color: #93d17a;
+}
+
+.videoOuter {
+  position: relative;
+  top: 78px;
+  background: var(--background);
+  text-align: center;
+}
+.videoOuter .videoTitle {
+  color: var(--text-primary);
+  font-size: 30px;
+  height: 100%;
+  width: 100%;
+  font-weight: bold;
+}
+.videoOuter .embedOuter {
+  position: relative;
+  width: 90%;
+  margin: auto;
+  padding-bottom: 50%;
+  height: 0;
+  border: solid;
+}
+.videoOuter .embedOuter .embedStyle {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.videoOuter .episodeTitle {
+  color: var(--text-primary);
+  font-size: 20px;
+  font-weight: bold;
+}
+.videoOuter .episodeOuter {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background: none;
+  width: 100%;
+  padding: 20px 15px;
+}
+.videoOuter .episodeOuter .episodeBox {
+  position: relative;
+}
+.videoOuter .episodeOuter .episodeBox .removeBox {
+  position: absolute;
+  top: -10px;
+  right: -3px;
+  display: flex;
+  flex-direction: row;
+  z-index: 1;
+  background: red;
+  border: solid 3px;
+  border-radius: 5px;
+}
+.videoOuter .episodeOuter .episodeBox .removeBox:hover .remove {
+  width: 52px;
+}
+.videoOuter .episodeOuter .episodeBox .removeBox:hover .fas.fa-times {
+  border-left: solid black 2px;
+  border-radius: 0;
+  padding-left: 1px;
+}
+.videoOuter .episodeOuter .episodeBox .removeBox .fas.fa-times {
+  color: white;
+  font-size: 5px;
+  background: red;
+  border: solid red;
+  border-radius: 5px;
+  height: 16px;
+}
+.videoOuter .episodeOuter .episodeBox .removeBox .remove {
+  color: white;
+  font-size: 3px;
+  font-weight: bold;
+  background: red;
+  width: 0px;
+  height: 16px;
+  transition: 1s;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  cursor: pointer;
+}
+.videoOuter .episodeOuter .episodeBox .episodeBtn {
+  position: relative;
+  background: white;
+  color: black;
+  border: solid;
+  width: 60px;
+  height: 40px;
+  border-radius: 5px;
+  line-height: 35px;
+  text-align: center;
+  margin-right: 5px;
+  cursor: pointer;
+  outline: none;
+  font-weight: bold;
+  font-weight: 300;
+}
+.videoOuter .episodeOuter .episodeBox .episodeBtn:focus {
+  background: lightblue;
+}
+.videoOuter .episodeOuter .episodeBox .episodeBtn[class="episodeBtn lastWatch"] {
+  border: solid rgb(255, 133, 154);
+}
+.videoOuter .episodeOuter .episodeBox .episodeBtn[class="episodeBtn lastWatch"]::after {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  content: "上次觀看";
+  font-size: 5px;
+  font-weight: bold;
+  background: rgb(255, 133, 154);
+  color: white;
+  height: 10px;
+  width: 100%;
+  line-height: 11px;
+  padding: 1px;
+}
+.videoOuter .videoDetailOuter .videoDetailBox {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  list-style: none;
+  font-size: 17px;
+  font-weight: 400;
+  color: var(--text-primary);
+}
+.videoOuter .videoDetailOuter .videoDetailBox li {
+  display: flex;
+  flex-wrap: nowrap;
+  white-space: nowrap;
+  flex-basis: 20%;
+  justify-content: center;
+  align-items: center;
+  margin-right: 5px;
+  margin-bottom: 5px;
+}
+.videoOuter .videoDetailOuter .videoDetailBox li span {
+  white-space: nowrap;
+  background: gray;
+  border-radius: 5px;
+  margin-right: 5px;
+  color: white;
+  padding: 5px;
+}
+.videoOuter .videoIntroOuter {
+  text-align: left;
+  margin: 10px 15px;
+}
+.videoOuter .videoIntroOuter .title {
+  color: var(--text-primary);
+  font-size: 18px;
+  border-bottom: 1px solid var(--text-primary);
+}
+.videoOuter .videoIntroOuter .intro {
+  color: var(--text-primary);
+  font-size: 14px;
+  overflow: hidden;
+  transition: 0.5s linear;
+  height: auto;
+  line-height: 25px;
+}
+.videoOuter .videoIntroOuter .btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(211, 224, 203, 0.5);
+  height: 20px;
+  color: var(--text-primary);
+}
+.videoOuter .videoIntroOuter .btn:focus {
+  box-shadow: none;
+}
+.videoOuter .videoIntroOuter .btn:hover {
+  font-weight: bold;
+}
+.videoOuter .videoCommentOuter {
+  display: flex;
+  flex-direction: column;
+  margin: 0px 15px;
+}
+.videoOuter .videoCommentOuter .title {
+  color: var(--text-primary);
+  text-align: left;
+  border-bottom: 1px solid black;
+}
+.videoOuter .videoCommentOuter .postCommentBox {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  margin-top: 10px;
+}
+.videoOuter .videoCommentOuter .postCommentBox .imgBox {
+  position: relative;
+  padding-bottom: 5%;
+  border-radius: 5px;
+  width: 100%;
+  margin-left: 5px;
+  flex-basis: 10%;
+  height: auto;
+  overflow: hidden;
+}
+@media (max-width: 768px) {
+  .videoOuter .videoCommentOuter .postCommentBox .imgBox {
+    padding-bottom: 10%;
+    flex-basis: 20%;
+  }
+}
+@media (max-width: 375px) {
+  .videoOuter .videoCommentOuter .postCommentBox .imgBox {
+    padding-bottom: 15%;
+    flex-basis: 25%;
+  }
+}
+.videoOuter .videoCommentOuter .postCommentBox .imgBox .image {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transition: 0.5s;
+}
+.videoOuter .videoCommentOuter .postCommentBox .inputBox {
+  position: relative;
+  top: 0;
+  margin-left: 20px;
+  flex-grow: 1;
+}
+.videoOuter .videoCommentOuter .postCommentBox .inputBox .input {
+  height: 100%;
+  width: 100%;
+  border: none;
+  outline: none;
+  background: var(--background);
+  color: var(--text-primary);
+  border-bottom: 2px solid silver;
+  text-align: left;
+}
+.videoOuter .videoCommentOuter .postCommentBox .inputBox .input:focus ~ .underline::before {
+  transform: scale(1);
+}
+.videoOuter .videoCommentOuter .postCommentBox .inputBox .input:focus ~ .confirmBox {
+  background-color: rgba(111, 131, 111, 0.8);
+}
+.videoOuter .videoCommentOuter .postCommentBox .inputBox .underline {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  width: 100%;
+}
+.videoOuter .videoCommentOuter .postCommentBox .inputBox .underline::before {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  content: "";
+  height: 100%;
+  width: 100%;
+  background: rgba(111, 131, 111, 0.8);
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 0.3s ease;
+}
+.videoOuter .videoCommentOuter .postCommentBox .inputBox .fa-times-circle {
+  position: absolute;
+  color: var(--text-primary);
+  top: 0px;
+  right: 70px;
+  cursor: pointer;
+}
+.videoOuter .videoCommentOuter .postCommentBox .inputBox .confirmBox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  bottom: 2px;
+  right: 0;
+  background-color: silver;
+  width: auto;
+  height: auto;
+  border-radius: 15% 15% 0 0;
+  transition: 2s;
+}
+.videoOuter .videoCommentOuter .postCommentBox .inputBox .confirmBox .btn {
+  position: relative;
+  bottom: -2px;
+  color: white;
+  text-shadow: 1px 1px 2px black;
+  width: 100%;
+  border: none;
+  white-space: nowrap;
+  cursor: pointer;
+}
+.videoOuter .videoCommentOuter .commentOuter .commentOrderBox {
+  display: flex;
+  margin-top: 10px;
+}
+.videoOuter .videoCommentOuter .commentOuter .commentOrderBox button {
+  border-radius: 5px;
+  border: solid black 2px;
+  padding: 3px;
+}
+.videoOuter .videoCommentOuter .commentOuter .commentOrderBox .hot {
+  margin-right: 5px;
+}
+.videoOuter .videoCommentOuter .commentOuter .seperate {
+  border-radius: 5px;
+  box-shadow: 0 0 5px gray;
+  margin: 5px 0;
+  overflow: hidden;
+}
+.videoOuter .videoCommentOuter .commentOuter .seperate:empty {
+  display: none;
+}
+.videoOuter .videoCommentOuter .commentOuter .seperate .commentListBox {
+  position: relative;
+  margin: 10px 0;
+  display: flex;
+  flex-direction: row;
+  color: var(--text-secondary);
+}
+.videoOuter .videoCommentOuter .commentOuter .seperate .commentListBox .imgBox {
+  position: relative;
+  padding-bottom: 5%;
+  border-radius: 5px;
+  width: 100%;
+  flex-basis: 10%;
+  height: 0;
+  margin-left: 5px;
+  overflow: hidden;
+}
+@media (max-width: 768px) {
+  .videoOuter .videoCommentOuter .commentOuter .seperate .commentListBox .imgBox {
+    padding-bottom: 10%;
+    flex-basis: 20%;
+  }
+}
+@media (max-width: 375px) {
+  .videoOuter .videoCommentOuter .commentOuter .seperate .commentListBox .imgBox {
+    display: none;
+  }
+}
+.videoOuter .videoCommentOuter .commentOuter .seperate .commentListBox .imgBox .image {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transition: 0.5s;
+}
+.videoOuter .videoCommentOuter .commentOuter .seperate .commentListBox .inputBox {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  position: relative;
+  top: 0;
+  margin-left: 10px;
+  flex-grow: 1;
+}
+@media (max-width: 375px) {
+  .videoOuter .videoCommentOuter .commentOuter .seperate .commentListBox .inputBox {
+    margin: 0;
+  }
+}
+.videoOuter .videoCommentOuter .commentOuter .seperate .commentListBox .inputBox .userBox {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-top: 5px;
+}
+.videoOuter .videoCommentOuter .commentOuter .seperate .commentListBox .inputBox .userBox .floor {
+  border: solid rgb(87, 87, 87) 2px;
+  border-radius: 5px;
+  margin-right: 5px;
+  background: rgba(138, 165, 138, 0.8);
+  color: white;
+  text-shadow: 1px 1px 3px black;
+  padding: 0px 2px;
+}
+.videoOuter .videoCommentOuter .commentOuter .seperate .commentListBox .inputBox .userBox .user {
+  font-weight: bold;
+}
+.videoOuter .videoCommentOuter .commentOuter .seperate .commentListBox .inputBox .userBox .date {
+  position: relative;
+  top: 1px;
+  margin: 0 5px;
+  font-size: 8px;
+}
+.videoOuter .videoCommentOuter .commentOuter .seperate .commentListBox .inputBox .msg {
+  color: var(--text-primary);
+}
+.videoOuter .videoCommentOuter .commentOuter .seperate .commentListBox .inputBox .thumbs .like {
+  cursor: pointer;
+}
+.videoOuter .videoCommentOuter .commentOuter .seperate .commentListBox .inputBox .thumbs .dislike {
+  cursor: pointer;
+  margin: 0 20px;
+}
+.videoOuter .videoCommentOuter .commentOuter .seperate .commentListBox .inputBox .thumbs .replyTrigger {
+  background: none;
+  color: var(--text-secondary);
+}
+.videoOuter .videoCommentOuter .commentOuter .seperate .commentListBox .inputBox .thumbs .deleteTrigger {
+  margin-left: 5px;
+  background: none;
+  color: var(--text-secondary);
+}
+.videoOuter .videoCommentOuter .commentOuter .seperate .commentListBox .inputBox .replyInput {
+  border: solid rgba(111, 131, 111, 0.8);
+  border-radius: 10px;
+  overflow: hidden;
+}
+.videoOuter .videoCommentOuter .commentOuter .seperate .commentListBox .inputBox .replyInput input {
+  border: none;
+  padding: 0 10px;
+}
+.videoOuter .videoCommentOuter .commentOuter .seperate .commentListBox .inputBox .replyInput input:focus {
+  outline: none;
+}
+.videoOuter .videoCommentOuter .commentOuter .seperate .commentListBox .inputBox .replyInput button {
+  padding: 0 10px;
+  background: silver;
+  color: white;
+  text-shadow: 1px 1px 2px black;
+}
+.videoOuter .videoCommentOuter .commentOuter .seperate .commentListBox .inputBox .replyInput button:hover {
+  background: rgba(111, 131, 111, 0.8);
+}
+.videoOuter .videoCommentOuter .commentOuter .seperate .replyListBox {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  background: rgba(211, 211, 211, 0.5);
+}
+.videoOuter .videoCommentOuter .commentOuter .seperate .replyListBox .imgBox {
+  position: relative;
+  margin-left: 5px;
+  padding-bottom: 5%;
+  border-radius: 5px;
+  width: 100%;
+  flex-basis: 10%;
+  height: 0;
+  overflow: hidden;
+}
+@media (max-width: 768px) {
+  .videoOuter .videoCommentOuter .commentOuter .seperate .replyListBox .imgBox {
+    padding-bottom: 10%;
+    flex-basis: 20%;
+  }
+}
+@media (max-width: 375px) {
+  .videoOuter .videoCommentOuter .commentOuter .seperate .replyListBox .imgBox {
+    display: none;
+  }
+}
+.videoOuter .videoCommentOuter .commentOuter .seperate .replyListBox .imgBox .image {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transition: 0.5s;
+}
+.videoOuter .videoCommentOuter .commentOuter .seperate .replyListBox .inputBox {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  position: relative;
+  top: 0;
+  margin-left: 10px;
+  flex-grow: 1;
+}
+@media (max-width: 375px) {
+  .videoOuter .videoCommentOuter .commentOuter .seperate .replyListBox .inputBox {
+    margin: 0;
+  }
+}
+.videoOuter .videoCommentOuter .commentOuter .seperate .replyListBox .inputBox .userBox {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-top: 5px;
+  color: var(--text-secondary);
+}
+.videoOuter .videoCommentOuter .commentOuter .seperate .replyListBox .inputBox .userBox .floor {
+  border: solid rgb(87, 87, 87) 2px;
+  border-radius: 5px;
+  margin-right: 5px;
+  background: rgba(138, 161, 175, 0.8);
+  color: white;
+  text-shadow: 1px 1px 3px black;
+  padding: 0px 2px;
+}
+.videoOuter .videoCommentOuter .commentOuter .seperate .replyListBox .inputBox .userBox .user {
+  font-weight: bold;
+}
+.videoOuter .videoCommentOuter .commentOuter .seperate .replyListBox .inputBox .userBox .date {
+  position: relative;
+  top: 1px;
+  margin: 0 5px;
+  font-size: 8px;
+}
+.videoOuter .videoCommentOuter .commentOuter .seperate .replyListBox .inputBox .msg {
+  color: var(--text-primary);
+}
+.videoOuter .videoCommentOuter .commentOuter .seperate .replyListBox .inputBox .thumbs {
+  color: var(--text-secondary);
+}
+.videoOuter .videoCommentOuter .commentOuter .seperate .replyListBox .inputBox .thumbs .like {
+  cursor: pointer;
+}
+.videoOuter .videoCommentOuter .commentOuter .seperate .replyListBox .inputBox .thumbs .dislike {
+  cursor: pointer;
+  margin: 0 20px;
+}
+.videoOuter .videoCommentOuter .commentOuter .seperate .replyListBox .inputBox .thumbs .replyTrigger {
+  background: none;
+}
+.videoOuter .videoCommentOuter .commentOuter .seperate .replyListBox .inputBox .thumbs .deleteTrigger {
+  margin-left: 5px;
+  background: none;
+  color: var(--text-secondary);
+}
+.videoOuter .videoCommentOuter .commentOuter .seperate .replyListBox .inputBox .replyInput {
+  border: solid rgba(111, 131, 111, 0.8);
+  border-radius: 10px;
+  overflow: hidden;
+}
+.videoOuter .videoCommentOuter .commentOuter .seperate .replyListBox .inputBox .replyInput input {
+  border: none;
+  padding: 0 10px;
+}
+.videoOuter .videoCommentOuter .commentOuter .seperate .replyListBox .inputBox .replyInput input:focus {
+  outline: none;
+}
+.videoOuter .videoCommentOuter .commentOuter .seperate .replyListBox .inputBox .replyInput button {
+  padding: 0 10px;
+  background: silver;
+  color: white;
+  text-shadow: 1px 1px 2px black;
+}
+.videoOuter .videoCommentOuter .commentOuter .seperate .replyListBox .inputBox .replyInput button:hover {
+  background: rgba(111, 131, 111, 0.8);
+}
+
+.watchHistoryOuter {
+  position: relative;
+  top: 78px;
+  height: 90vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--background);
+}
+@media (max-width: 768px) {
+  .watchHistoryOuter {
+    margin: 0;
+  }
+}
+@media (max-width: 375px) {
+  .watchHistoryOuter {
+    margin: 0;
+  }
+}
+.watchHistoryOuter .pageTitle {
+  color: var(--text-primary);
+  font-size: 25px;
+  font-weight: bold;
+  margin-left: 15px;
+}
+.watchHistoryOuter .historyBox {
+  position: relative;
+  width: calc(100% - 16px);
+  margin: 0 8px 16px;
+  background: var(--background-secondary);
+  color: var(--text-primary);
+  border: solid black;
+  border-radius: 8px;
+  box-shadow: 0px 5px 8px 1px rgba(0, 0, 0, 0.7);
+  transition: 0.5s;
+  overflow: hidden;
+}
+.watchHistoryOuter .historyBox .boxInner {
+  display: flex;
+  flex-direction: row;
+}
+.watchHistoryOuter .historyBox .boxInner .imgOuter {
+  position: relative;
+  padding-bottom: calc(10% + 110px);
+  border-radius: 5px 0 0 5px;
+  width: calc(25% + 100px);
+  height: 0;
+  overflow: hidden;
+}
+@media (max-width: 500px) {
+  .watchHistoryOuter .historyBox .boxInner .imgOuter {
+    min-width: 219.2px;
+  }
+}
+@media (max-width: 400px) {
+  .watchHistoryOuter .historyBox .boxInner .imgOuter {
+    position: absolute;
+    width: 100%;
+    opacity: 0.3;
+    filter: grayscale(70%);
+    padding-bottom: calc(10% + 180px);
+    min-width: 171.4px;
+  }
+}
+.watchHistoryOuter .historyBox .boxInner .imgOuter .img {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transition: 0.5s;
+}
+.watchHistoryOuter .historyBox .boxInner .textOuter {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  text-shadow: 1px 1px 2px black;
+}
+.watchHistoryOuter .historyBox .boxInner .textOuter .title {
+  display: flex;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 16px;
+}
+.watchHistoryOuter .historyBox .boxInner .textOuter .box1 {
+  display: flex;
+  flex-direction: column;
+  margin-left: 10px;
+}
+.watchHistoryOuter .historyBox .boxInner .textOuter .box1 .title2 {
+  font-weight: bold;
+  font-size: 14px;
+}
+.watchHistoryOuter .historyBox .boxInner .textOuter .box1 .episodeBox {
+  display: flex;
+  flex-direction: row;
+}
+.watchHistoryOuter .historyBox .boxInner .textOuter .box1 .episodeBox .episode {
+  color: var(--text-primary);
+  display: flex;
+  flex-direction: row;
+  font-size: 14px;
+  transition: 0.5s;
+}
+.watchHistoryOuter .historyBox .boxInner .textOuter .box1 .episodeBox .episode .number {
+  color: rgb(231, 142, 59);
+}
+.watchHistoryOuter .historyBox .boxInner .textOuter .box1 .episodeBox .episode:hover {
+  text-decoration: underline;
+}
+.watchHistoryOuter .historyBox .boxInner .textOuter .box1 .episodeBox .branch {
+  font-size: 14px;
+}
+@media (max-width: 400px) {
+  .watchHistoryOuter .historyBox .boxInner .textOuter .box1 .episodeBox .branch {
+    display: none;
+  }
+}
+.watchHistoryOuter .historyBox .boxInner .textOuter .box1 .episodeBox .time {
+  font-size: 14px;
+}
+@media (max-width: 400px) {
+  .watchHistoryOuter .historyBox .boxInner .textOuter .box1 .episodeBox {
+    flex-direction: column;
+  }
+}
+.watchHistoryOuter .historyBox .boxInner .textOuter .box1 .latestEpisode {
+  font-size: 14px;
+}
+.watchHistoryOuter .historyBox .boxInner .textOuter .box1 .episodePlusPlus {
+  display: flex;
+  font-weight: bold;
+  color: #62d86c;
+  font-size: 14px;
+  align-items: center;
+}
+.watchHistoryOuter .historyBox .boxInner .textOuter .box1 .episodePlusPlus .animation {
+  margin-left: 5px;
+  transition: 1s;
+  transform: scale(0.7);
+}
+.watchHistoryOuter .historyBox .boxInner .textOuter .box1 .episodePlusPlus:hover .animation {
+  margin-left: 10px;
+}
+.watchHistoryOuter .historyBox .boxInner .textOuter .box1 .date {
+  position: absolute;
+  bottom: 0;
+}
+@media (max-width: 400px) {
+  .watchHistoryOuter .historyBox .boxInner .textOuter .box1 .date {
+    position: relative;
+    margin-top: 15px;
+  }
+}
+@media (max-width: 350px) {
+  .watchHistoryOuter .historyBox {
+    text-shadow: 1px 1px 3px rgb(90, 90, 90);
+  }
+}
+
+section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 75px;
+  background: transparent;
+  -webkit-animation: animateBackgroundC0olor 10s linear infinite;
+          animation: animateBackgroundC0olor 10s linear infinite;
+}
+@-webkit-keyframes animateBackgroundC0olor {
+  0% {
+    filter: hue-rotate(0deg);
+  }
+  100% {
+    filter: hue-rotate(360deg);
+  }
+}
+@keyframes animateBackgroundC0olor {
+  0% {
+    filter: hue-rotate(0deg);
+  }
+  100% {
+    filter: hue-rotate(360deg);
+  }
+}
+section .loading {
+  position: relative;
+  width: 250px;
+  height: 250px;
+  transform: scale(0.3);
+}
+section .loading .blocks {
+  position: absolute;
+  width: 8px;
+  height: 25px;
+  background: #050c09;
+  left: 50%;
+  border-radius: 8px;
+  transform: rotate(calc(18deg * var(--i)));
+  transform-origin: 0 125px;
+  -webkit-animation: animate 1.9s ease-in-out infinite;
+          animation: animate 1.9s ease-in-out infinite;
+  -webkit-animation-delay: calc(0.05s * var(--i));
+          animation-delay: calc(0.05s * var(--i));
+}
+@-webkit-keyframes animate {
+  0%, 50% {
+    background: #050c09;
+    box-shadow: none;
+  }
+  50.1%, 100% {
+    background: #0f0;
+    box-shadow: 0 0 5px #0f0, 0 0 15px #0f0, 0 0 30px #0f0, 0 0 60px #0f0, 0 0 90px #0f0;
+  }
+}
+@keyframes animate {
+  0%, 50% {
+    background: #050c09;
+    box-shadow: none;
+  }
+  50.1%, 100% {
+    background: #0f0;
+    box-shadow: 0 0 5px #0f0, 0 0 15px #0f0, 0 0 30px #0f0, 0 0 60px #0f0, 0 0 90px #0f0;
+  }
+}
+section h3 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 2em;
+  letter-spacing: 2px;
+  color: #0f0;
+  text-shadow: 0 0 5px #0f0, 0 0 15px #0f0;
+}/*# sourceMappingURL=style.css.map */

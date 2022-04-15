@@ -1,0 +1,178 @@
+@mixin pad {
+  @media (max-width: 768px) {
+    @content;
+  }
+}
+
+@mixin custom500 {
+  @media (max-width: 500px) {
+    @content;
+  }
+}
+
+@mixin custom400 {
+  @media (max-width: 400px) {
+    @content;
+  }
+}
+
+@mixin custom350 {
+  @media (max-width: 350px) {
+    @content;
+  }
+}
+
+@mixin custom300 {
+  @media (max-width: 300px) {
+    @content;
+  }
+}
+
+@mixin mobile {
+  @media (max-width: 375px) {
+    @content;
+  }
+}
+
+.watchHistoryOuter {
+  position: relative;
+  top: 78px;
+  height: 90vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--background);
+  @include pad {
+    margin: 0;
+  }
+  @include mobile {
+    margin: 0;
+  }
+  .pageTitle {
+    color: var(--text-primary);
+    font-size: 25px;
+    font-weight: bold;
+    margin-left: 15px;
+  }
+  .historyBox {
+    position: relative;
+    width: calc(100% - 16px);
+    margin: 0 8px 16px;
+    background: var(--background-secondary);
+    color: var(--text-primary);
+    border: solid black;
+    border-radius: 8px;
+    box-shadow: 0px 5px 8px 1px rgba(0, 0, 0, 0.7);
+    transition: 0.5s;
+    overflow: hidden;
+    .boxInner {
+      display: flex;
+      flex-direction: row;
+      .imgOuter {
+        position: relative;
+        padding-bottom: calc(10% + 110px);
+        border-radius: 5px 0 0 5px;
+        width: calc(25% + 100px);
+        height: 0;
+        overflow: hidden;
+        @include custom500 {
+          min-width: 219.2px;
+        }
+        @include custom400 {
+          position: absolute;
+          width: 100%;
+          opacity: 0.3;
+          filter: grayscale(70%);
+          padding-bottom: calc(10% + 180px);
+          min-width: 171.4px;
+        }
+        .img {
+          position: absolute;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          transition: 0.5s;
+        }
+      }
+      .textOuter {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+        text-shadow: 1px 1px 2px black;
+        .title {
+          display: flex;
+          justify-content: center;
+          font-weight: bold;
+          font-size: 16px;
+        }
+        .box1 {
+          display: flex;
+          flex-direction: column;
+          margin-left: 10px;
+          .title2 {
+            font-weight: bold;
+            font-size: 14px;
+          }
+          .episodeBox {
+            display: flex;
+            flex-direction: row;
+            .episode {
+              color: var(--text-primary);
+              display: flex;
+              flex-direction: row;
+              font-size: 14px;
+              transition: 0.5s;
+              .number {
+                color: rgb(231, 142, 59);
+              }
+              &:hover {
+                text-decoration: underline;
+              }
+            }
+            .branch {
+              font-size: 14px;
+              @include custom400 {
+                display: none;
+              }
+            }
+            .time {
+              font-size: 14px;
+            }
+            @include custom400 {
+              flex-direction: column;
+            }
+          }
+          .latestEpisode {
+            font-size: 14px;
+          }
+          .episodePlusPlus {
+            display: flex;
+            font-weight: bold;
+            color: #62d86c;
+            font-size: 14px;
+            align-items: center;
+            .animation {
+              margin-left: 5px;
+              transition: 1s;
+              transform: scale(0.7);
+            }
+            &:hover .animation {
+              margin-left: 10px;
+            }
+          }
+          .date {
+            position: absolute;
+            bottom: 0;
+            @include custom400 {
+              position: relative;
+              margin-top: 15px;
+            }
+          }
+        }
+      }
+    }
+    @include custom350 {
+      text-shadow: 1px 1px 3px rgb(90, 90, 90);
+    }
+  }
+}

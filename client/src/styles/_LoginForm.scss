@@ -1,0 +1,254 @@
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  .formGroup {
+    input {
+      border-radius: 100px;
+      padding: 6px 12px;
+      height: 34px;
+      width: 100%;
+      outline: none;
+      border: solid gray 2px;
+      box-shadow: 2px 2px 1px rgb(41, 41, 41);
+      margin: 0 0 10px 0;
+    }
+  }
+}
+
+.signInCloseBtn {
+  position: absolute;
+  top: 0.8rem;
+  right: 0.8rem;
+  color: white;
+  font-size: 1.2rem;
+  cursor: pointer;
+  text-shadow: 2px 2px 2px black;
+  &:hover {
+    color: red;
+  }
+}
+
+//signInCSS
+
+.signInOuter {
+  position: relative;
+  top: 50px;
+  width: 300px;
+  height: 500px;
+}
+
+.signInBox {
+  background: white;
+  height: auto;
+  width: 300px;
+  border: solid #283048;
+  border-width: 4px;
+  border-radius: 5px;
+  z-index: 1;
+  .nav-tabs {
+    background: linear-gradient(to right, #283048, #859398);
+    .nav-link {
+      color: white;
+      border: none;
+      border-top-left-radius: 0;
+    }
+    .nav-link.active {
+      color: rgb(93, 177, 255);
+    }
+    .nav-link:hover {
+      color: rgb(93, 177, 255);
+    }
+  }
+  .tab-content {
+    padding: 0.6rem;
+  }
+  .signInTitleBox {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 0.5rem;
+    height: 3rem;
+    .signInTitle {
+      font-size: 2rem;
+    }
+  }
+
+  .submitBox {
+    position: relative;
+    width: 100%;
+    z-index: 0;
+    &:before {
+      content: "";
+      position: absolute;
+      left: -1px;
+      bottom: -2px;
+      height: 100%;
+      width: 61%;
+      padding: 10px;
+      z-index: -1;
+      border: solid black 10px;
+      background-color: black;
+      border-radius: 5px;
+    }
+    &:after {
+      content: "";
+      position: absolute;
+      right: -0.8px;
+      bottom: -2px;
+      height: 100%;
+      width: 37.5%;
+      padding: 10px;
+      z-index: -1;
+      border: solid black 10px;
+      background-color: black;
+      border-radius: 5px;
+    }
+    .submitBtn {
+      position: relative;
+      width: 60%;
+      height: 35px;
+      margin-right: 10px;
+      background-color: #0971d3;
+      color: white;
+      outline: none;
+      border-radius: 5px;
+      text-shadow: 0px 1px 2px black;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2),
+        inset 0 -0.1em 0 0.1em #073561;
+      &:after {
+        content: "";
+        position: absolute;
+        left: 3px;
+        top: 0.1px;
+        border: solid rgba(255, 248, 239, 0.1) 2px;
+        background: transparent;
+        width: 96.5%;
+        height: 90%;
+        border-radius: 5px;
+      }
+      &:active {
+        background-color: #0b61b3;
+        box-shadow: none;
+      }
+      &:active:after {
+        border: none;
+      }
+    }
+    .submitCancel {
+      position: relative;
+      width: 36%;
+      height: 35px;
+      background-color: lightgray;
+      color: black;
+      outline: none;
+      border-radius: 5px;
+      text-shadow: 0px 1px 2px black;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2),
+        inset 0 -0.1em 0 0.1em #5a5a5a;
+      &:after {
+        content: "";
+        position: absolute;
+        right: 2px;
+        top: 0.1px;
+        border: solid rgba(255, 248, 239, 0.1) 2px;
+        background: transparent;
+        width: 95%;
+        height: 90%;
+        border-radius: 5px;
+      }
+      &:active {
+        background-color: rgb(163, 163, 163);
+        box-shadow: none;
+      }
+      &:active:after {
+        border: none;
+      }
+    }
+  }
+}
+
+.signInCheckBox {
+  label {
+    margin-right: 1rem;
+  }
+}
+
+//registerCSS
+
+.registerTitleBox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 0.5rem;
+  height: 3rem;
+  .registerTitle {
+    font-size: 2rem;
+  }
+}
+
+.registerCheckBox {
+  width: 100%;
+  height: 3rem;
+  label {
+    padding-left: 0.5rem;
+  }
+}
+
+.alertMessage {
+  color: red;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.registerBtnBox {
+  position: relative;
+  width: 100%;
+  z-index: 0;
+  &:before {
+    content: "";
+    position: absolute;
+    left: 1px;
+    bottom: -2px;
+    height: 100%;
+    width: 99%;
+    padding: 10px;
+    z-index: -1;
+    border: solid black 10px;
+    background-color: black;
+    border-radius: 5px;
+  }
+  .registerBtn {
+    position: relative;
+    top: 0;
+    left: 3px;
+    width: 98%;
+    height: 35px;
+    background-color: #0971d3;
+    color: white;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    text-shadow: 0px 1px 2px black;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2),
+      inset 0 -0.1em 0 0.1em #073561;
+    &:after {
+      content: "";
+      position: absolute;
+      left: 2px;
+      top: 0.1px;
+      border: solid rgba(255, 248, 239, 0.1) 2px;
+      background: transparent;
+      width: 98.5%;
+      height: 90%;
+      border-radius: 5px;
+    }
+    &:active {
+      background-color: #0b61b3;
+      box-shadow: none;
+    }
+    &:active:after {
+      border: none;
+    }
+  }
+}

@@ -1,0 +1,115 @@
+.postOuter {
+  background: rgb(59, 59, 59);
+  position: absolute;
+  top: 10%;
+  width: 300px;
+  height: auto;
+  border: solid black;
+  margin: 0 auto;
+  .formTitle {
+    font-size: 20px;
+    margin: 10px 0;
+    color: #fff;
+    text-shadow: 0 0 7px #fff, 0 0 10px #fff;
+  }
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    .formGroup2 {
+      position: relative;
+      input {
+        width: 100%;
+        padding: 10px 0 0 0;
+        font-size: 16px;
+        color: #fff;
+        margin-bottom: 10px;
+        border: none;
+        border-bottom: 1px solid #fff;
+        outline: none;
+        background: transparent;
+        &:focus ~ label,
+        &:active ~ label {
+          top: -15px;
+          left: 0;
+          color: rgb(238, 248, 255);
+          font-size: 12px;
+        }
+      }
+      label {
+        position: absolute;
+        top: 0;
+        left: 0;
+        padding: 10px 0;
+        font-size: 16px;
+        color: #fff;
+        pointer-events: none;
+        transition: 0.5s;
+      }
+    }
+    textarea {
+      width: 100%;
+      padding: 10px;
+      max-width: 100%;
+      line-height: 1.5;
+      border-radius: 5px;
+      border: 2px solid gray;
+      box-shadow: 2px 2px 1px rgb(41, 41, 41);
+      margin: 0 0 5px 0;
+      &:focus-visible {
+        outline: none;
+      }
+    }
+  }
+  .submitBtn {
+    position: relative;
+    top: 0;
+    width: 90%;
+    height: auto;
+    font-size: 20px;
+    color: white;
+    background: gray;
+    padding: 0 5px 0 5px;
+    outline: none;
+    border-radius: 5px;
+    text-shadow: 0px 1px 2px black;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2),
+      inset 0 -0.1em 0 0.1em #5a5a5a;
+    margin-bottom: 10px;
+    &:hover {
+      color: #fff;
+      text-shadow: 0 0 7px #fff, 0 0 10px #fff;
+    }
+  }
+}
+
+//UploadEpisodeCSS
+.uploadEpisodeOuter {
+  position: relative;
+  bottom: 15px;
+  .circle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+    width: 30px;
+    height: 30px;
+    background: white;
+    border: solid gray;
+    border-radius: 50%;
+    margin-left: 5px;
+    cursor: pointer;
+    .fas.fa-plus {
+      color: gray;
+      font-size: 17px;
+    }
+    &:hover {
+      border: solid #93d17a;
+      .fas.fa-plus {
+        color: #93d17a;
+      }
+    }
+  }
+}

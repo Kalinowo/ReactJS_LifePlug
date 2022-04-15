@@ -1,0 +1,556 @@
+@mixin pad {
+  @media (max-width: 768px) {
+    @content;
+  }
+}
+
+@mixin custom600 {
+  @media (max-width: 600px) {
+    @content;
+  }
+}
+
+@mixin mobile {
+  @media (max-width: 375px) {
+    @content;
+  }
+}
+
+.videoOuter {
+  position: relative;
+  top: 78px;
+  background: var(--background);
+  text-align: center;
+  .videoTitle {
+    color: var(--text-primary);
+    font-size: 30px;
+    height: 100%;
+    width: 100%;
+    font-weight: bold;
+  }
+  .embedOuter {
+    position: relative;
+    width: 90%;
+    margin: auto;
+    padding-bottom: 50%;
+    height: 0;
+    border: solid;
+    .embedStyle {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+  }
+  .episodeTitle {
+    color: var(--text-primary);
+    font-size: 20px;
+    font-weight: bold;
+  }
+  .episodeOuter {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background: none;
+    width: 100%;
+    padding: 20px 15px;
+    .episodeBox {
+      position: relative;
+      .removeBox {
+        position: absolute;
+        top: -10px;
+        right: -3px;
+        display: flex;
+        flex-direction: row;
+        z-index: 1;
+        background: red;
+        border: solid 3px;
+        border-radius: 5px;
+        &:hover .remove {
+          width: 52px;
+        }
+        &:hover .fas.fa-times {
+          border-left: solid black 2px;
+          border-radius: 0;
+          padding-left: 1px;
+        }
+        .fas.fa-times {
+          color: white;
+          font-size: 5px;
+          background: red;
+          border: solid red;
+          border-radius: 5px;
+          height: 16px;
+        }
+        .remove {
+          color: white;
+          font-size: 3px;
+          font-weight: bold;
+          background: red;
+          width: 0px;
+          height: 16px;
+          transition: 1s;
+          overflow-x: hidden;
+          overflow-y: hidden;
+          cursor: pointer;
+        }
+      }
+      .episodeBtn {
+        position: relative;
+        background: white;
+        color: black;
+        border: solid;
+        width: 60px;
+        height: 40px;
+        border-radius: 5px;
+        line-height: 35px;
+        text-align: center;
+        margin-right: 5px;
+        cursor: pointer;
+        outline: none;
+        font-weight: bold;
+        font-weight: 300;
+        &:focus {
+          background: lightblue;
+        }
+      }
+      .episodeBtn[class="episodeBtn lastWatch"] {
+        border: solid rgb(255, 133, 154);
+        &::after {
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          content: "上次觀看";
+          font-size: 5px;
+          font-weight: bold;
+          background: rgb(255, 133, 154);
+          color: white;
+          height: 10px;
+          width: 100%;
+          line-height: 11px;
+          padding: 1px;
+        }
+      }
+    }
+  }
+  .videoDetailOuter {
+    .videoDetailBox {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      list-style: none;
+      font-size: 17px;
+      font-weight: 400;
+      color: var(--text-primary);
+      li {
+        display: flex;
+        flex-wrap: nowrap;
+        white-space: nowrap;
+        flex-basis: 20%;
+        justify-content: center;
+        align-items: center;
+        margin-right: 5px;
+        margin-bottom: 5px;
+        span {
+          white-space: nowrap;
+          background: gray;
+          border-radius: 5px;
+          margin-right: 5px;
+          color: white;
+          padding: 5px;
+        }
+      }
+    }
+  }
+  .videoIntroOuter {
+    text-align: left;
+    margin: 10px 15px;
+    .title {
+      color: var(--text-primary);
+      font-size: 18px;
+      border-bottom: 1px solid var(--text-primary);
+    }
+    .intro {
+      color: var(--text-primary);
+      font-size: 14px;
+      overflow: hidden;
+      transition: 0.5s linear;
+      height: auto;
+      line-height: 25px;
+    }
+    .btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(211, 224, 203, 0.5);
+      height: 20px;
+      color: var(--text-primary);
+      &:focus {
+        box-shadow: none;
+      }
+      &:hover {
+        font-weight: bold;
+      }
+    }
+  }
+
+  //commentCSS
+  .videoCommentOuter {
+    display: flex;
+    flex-direction: column;
+    margin: 0px 15px;
+    .title {
+      color: var(--text-primary);
+      text-align: left;
+      border-bottom: 1px solid black;
+    }
+    .postCommentBox {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      width: 100%;
+      margin-top: 10px;
+      .imgBox {
+        position: relative;
+        padding-bottom: 5%;
+        border-radius: 5px;
+        width: 100%;
+        margin-left: 5px;
+        flex-basis: 10%;
+        height: auto;
+        overflow: hidden;
+        @include pad {
+          padding-bottom: 10%;
+          flex-basis: 20%;
+        }
+        @include mobile {
+          padding-bottom: 15%;
+          flex-basis: 25%;
+        }
+        .image {
+          position: absolute;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          transition: 0.5s;
+        }
+      }
+      .inputBox {
+        position: relative;
+        top: 0;
+        margin-left: 20px;
+        flex-grow: 1;
+        .input {
+          height: 100%;
+          width: 100%;
+          border: none;
+          outline: none;
+          background: var(--background);
+          color: var(--text-primary);
+          border-bottom: 2px solid silver;
+          text-align: left;
+          &:focus ~ .underline::before {
+            transform: scale(1);
+          }
+          &:focus ~ .confirmBox {
+            background-color: rgba(111, 131, 111, 0.8);
+          }
+        }
+        .underline {
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          height: 2px;
+          width: 100%;
+          &::before {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            content: "";
+            height: 100%;
+            width: 100%;
+            background: rgba(111, 131, 111, 0.8);
+            transform: scaleX(0);
+            transform-origin: center;
+            transition: transform 0.3s ease;
+          }
+        }
+        .fa-times-circle {
+          position: absolute;
+          color: var(--text-primary);
+          top: 0px;
+          right: 70px;
+          cursor: pointer;
+        }
+        .confirmBox {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          position: absolute;
+          bottom: 2px;
+          right: 0;
+          background-color: silver;
+          width: auto;
+          height: auto;
+          border-radius: 15% 15% 0 0;
+          transition: 2s;
+          .btn {
+            position: relative;
+            bottom: -2px;
+            color: white;
+            text-shadow: 1px 1px 2px black;
+            width: 100%;
+            border: none;
+            white-space: nowrap;
+            cursor: pointer;
+          }
+        }
+      }
+    }
+    .commentOuter {
+      .commentOrderBox {
+        display: flex;
+        margin-top: 10px;
+        button {
+          border-radius: 5px;
+          border: solid black 2px;
+          padding: 3px;
+        }
+        .hot {
+          margin-right: 5px;
+        }
+      }
+      .seperate {
+        border-radius: 5px;
+        box-shadow: 0 0 5px gray;
+        margin: 5px 0;
+        overflow: hidden;
+        &:empty {
+          display: none;
+        }
+        .commentListBox {
+          position: relative;
+          margin: 10px 0;
+          display: flex;
+          flex-direction: row;
+          color: var(--text-secondary);
+          .imgBox {
+            position: relative;
+            padding-bottom: 5%;
+            border-radius: 5px;
+            width: 100%;
+            flex-basis: 10%;
+            height: 0;
+            margin-left: 5px;
+            overflow: hidden;
+            @include pad {
+              padding-bottom: 10%;
+              flex-basis: 20%;
+            }
+            @include mobile {
+              display: none;
+            }
+            .image {
+              position: absolute;
+              left: 0;
+              width: 100%;
+              height: 100%;
+              transition: 0.5s;
+            }
+          }
+          .inputBox {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            position: relative;
+            top: 0;
+            margin-left: 10px;
+            flex-grow: 1;
+            @include mobile {
+              margin: 0;
+            }
+            .userBox {
+              display: flex;
+              flex-direction: row;
+              align-items: center;
+              margin-top: 5px;
+              .floor {
+                border: solid rgb(87, 87, 87) 2px;
+                border-radius: 5px;
+                margin-right: 5px;
+                background: rgba(138, 165, 138, 0.8);
+                color: white;
+                text-shadow: 1px 1px 3px black;
+                padding: 0px 2px;
+              }
+              .user {
+                font-weight: bold;
+              }
+              .date {
+                position: relative;
+                top: 1px;
+                margin: 0 5px;
+                font-size: 8px;
+              }
+            }
+            .msg {
+              color: var(--text-primary);
+            }
+            .thumbs {
+              .like {
+                cursor: pointer;
+              }
+              .dislike {
+                cursor: pointer;
+                margin: 0 20px;
+              }
+              .replyTrigger {
+                background: none;
+                color: var(--text-secondary);
+              }
+              .deleteTrigger {
+                margin-left: 5px;
+                background: none;
+                color: var(--text-secondary);
+              }
+            }
+            .replyInput {
+              border: solid rgba(111, 131, 111, 0.8);
+              border-radius: 10px;
+              overflow: hidden;
+              input {
+                border: none;
+                padding: 0 10px;
+                &:focus {
+                  outline: none;
+                }
+              }
+              button {
+                padding: 0 10px;
+                background: silver;
+                color: white;
+                text-shadow: 1px 1px 2px black;
+                &:hover {
+                  background: rgba(111, 131, 111, 0.8);
+                }
+              }
+            }
+          }
+        }
+        .replyListBox {
+          position: relative;
+          display: flex;
+          flex-direction: row;
+          background: rgba(211, 211, 211, 0.5);
+          .imgBox {
+            position: relative;
+            margin-left: 5px;
+            padding-bottom: 5%;
+            border-radius: 5px;
+            width: 100%;
+            flex-basis: 10%;
+            height: 0;
+            overflow: hidden;
+            @include pad {
+              padding-bottom: 10%;
+              flex-basis: 20%;
+            }
+            @include mobile {
+              display: none;
+            }
+            .image {
+              position: absolute;
+              left: 0;
+              width: 100%;
+              height: 100%;
+              transition: 0.5s;
+            }
+          }
+          .inputBox {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            position: relative;
+            top: 0;
+            margin-left: 10px;
+            flex-grow: 1;
+            @include mobile {
+              margin: 0;
+            }
+            .userBox {
+              display: flex;
+              flex-direction: row;
+              align-items: center;
+              margin-top: 5px;
+              color: var(--text-secondary);
+              .floor {
+                border: solid rgb(87, 87, 87) 2px;
+                border-radius: 5px;
+                margin-right: 5px;
+                background: rgba(138, 161, 175, 0.8);
+                color: white;
+                text-shadow: 1px 1px 3px black;
+                padding: 0px 2px;
+              }
+              .user {
+                font-weight: bold;
+              }
+              .date {
+                position: relative;
+                top: 1px;
+                margin: 0 5px;
+                font-size: 8px;
+              }
+            }
+            .msg {
+              color: var(--text-primary);
+            }
+            .thumbs {
+              color: var(--text-secondary);
+              .like {
+                cursor: pointer;
+              }
+              .dislike {
+                cursor: pointer;
+                margin: 0 20px;
+              }
+              .replyTrigger {
+                background: none;
+              }
+              .deleteTrigger {
+                margin-left: 5px;
+                background: none;
+                color: var(--text-secondary);
+              }
+            }
+            .replyInput {
+              border: solid rgba(111, 131, 111, 0.8);
+              border-radius: 10px;
+              overflow: hidden;
+              input {
+                border: none;
+                padding: 0 10px;
+                &:focus {
+                  outline: none;
+                }
+              }
+              button {
+                padding: 0 10px;
+                background: silver;
+                color: white;
+                text-shadow: 1px 1px 2px black;
+                &:hover {
+                  background: rgba(111, 131, 111, 0.8);
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
