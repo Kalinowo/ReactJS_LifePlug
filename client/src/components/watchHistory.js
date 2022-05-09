@@ -32,7 +32,7 @@ export default function WatchHistory(props) {
   }, []);
 
   React.useEffect(() => {
-    AnimeService.getAnime().then((data) => {
+    AnimeService.getEveryAnime().then((data) => {
       setAnimeData(data.data);
     });
   }, []);

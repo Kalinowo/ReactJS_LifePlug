@@ -51,19 +51,48 @@ class AnimeService {
     );
   }
 
-  getAnime() {
+  getEveryAnime() {
     let token;
     if (localStorage.getItem("user")) {
       token = JSON.parse(localStorage.getItem("user")).token;
     } else {
       token = "";
     }
-    return axios.get(API_URL, {
+    return axios.get(API_URL + "/everyAnime", {
       headers: {
         Authorization: token,
       },
     });
   }
+
+  getListOfAnime(season) {
+    let token;
+    if (localStorage.getItem("user")) {
+      token = JSON.parse(localStorage.getItem("user")).token;
+    } else {
+      token = "";
+    }
+    return axios.get(API_URL + "/" + season, {
+      headers: {
+        Authorization: token,
+      },
+    });
+  }
+
+  getListOfSeason() {
+    let token;
+    if (localStorage.getItem("user")) {
+      token = JSON.parse(localStorage.getItem("user")).token;
+    } else {
+      token = "";
+    }
+    return axios.get(API_URL + "/getListOfSeason", {
+      headers: {
+        Authorization: token,
+      },
+    });
+  }
+
   getOne(one) {
     let token;
     if (localStorage.getItem("user")) {

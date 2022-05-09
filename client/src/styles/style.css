@@ -768,6 +768,7 @@ form .formGroup input {
   width: 100%;
   height: 100%;
   transition: 0.5s;
+  transform: scale(1.08);
 }
 .homePageOuter .animeListOuter .animeListBox .animeListImgBox .latestEpisode {
   position: absolute;
@@ -819,7 +820,7 @@ form .formGroup input {
   text-overflow: ellipsis;
 }
 .homePageOuter .animeListOuter .animeListBox:hover .img {
-  transform: scale(1.08);
+  transform: scale(1.15);
 }
 .homePageOuter .animeListOuter .animeListBox:hover {
   color: black;

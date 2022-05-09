@@ -1,14 +1,37 @@
 import React from "react";
+import AnimeService from "../../../services/anime.service";
 import { Link } from "react-router-dom";
 
-export default function AnimeTemplate(props) {
-  const { AnimeData, Season } = props;
+export default function AnimeSearchPage(props) {
+  const [searchData, setSearchData] = React.useState(null);
+
+  let { searchTerm, animeData } = props;
+
+  React.useEffect(() => {
+    if (animeData !== null) {
+      setSearchData(
+        animeData.filter((anime) => {
+          if (anime.title.toLowerCase().includes(searchTerm.toLowerCase())) {
+            return anime;
+          } else {
+            return false;
+          }
+        })
+      );
+    }
+    //eslint-disable-next-line
+  }, [searchTerm]);
+
+  console.log(searchData);
 
   return (
-    <React.Fragment>
-      {AnimeData.map(
-        (list, index) =>
-          list.year === Season && (
+    <>
+      <div className="animeListOuter">
+        {searchData && searchData.length === 0 && (
+          <div className="notFound">沒有搜尋到動畫</div>
+        )}
+        {searchData &&
+          searchData.map((list, index) => (
             <React.Fragment key={index}>
               <Link
                 className="animeListBox"
@@ -29,8 +52,8 @@ export default function AnimeTemplate(props) {
                 </div>
               </Link>
             </React.Fragment>
-          )
-      )}
-    </React.Fragment>
+          ))}
+      </div>
+    </>
   );
 }

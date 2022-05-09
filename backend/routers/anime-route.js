@@ -9,8 +9,39 @@ router.use((req, res, next) => {
   next();
 });
 
-router.get("/", (req, res) => {
+router.get("/everyAnime", (req, res) => {
   Anime.find({})
+    .select([
+      "-_id",
+      "-year",
+      "-genre",
+      "-director",
+      "-agent",
+      "-producer",
+      "-intro",
+    ])
+    .then((anime) => {
+      res.send(anime);
+    })
+    .catch(() => {
+      res.send("Error");
+    });
+});
+
+router.get("/getListOfSeason", (req, res) => {
+  Anime.find({}, "year")
+    .select("-_id")
+    .then((anime) => {
+      res.send(anime);
+    })
+    .catch(() => {
+      res.send("Error");
+    });
+});
+
+router.get("/:season", (req, res) => {
+  let { season } = req.params;
+  Anime.find({ year: season })
     .then((anime) => {
       res.send(anime);
     })
