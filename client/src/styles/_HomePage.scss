@@ -155,12 +155,36 @@
         font-family: "Noto Sans TC", sans-serif;
         font-weight: bold;
         padding: 0 5px 0;
-        .name {
-          display: -webkit-box;
-          -webkit-box-orient: vertical;
-          -webkit-line-clamp: 1;
+        .name,
+        .scroll {
+          // display: -webkit-box;
+          // -webkit-box-orient: vertical;
+          // -webkit-line-clamp: 1;
           overflow: hidden;
           text-overflow: ellipsis;
+          white-space: nowrap;
+        }
+        &:hover > .scroll {
+          width: 100%;
+          overflow: visible;
+          animation: scrollingText linear 6s infinite forwards,
+            point2 linear 6s 6s infinite forwards;
+        }
+        @keyframes scrollingText {
+          0% {
+            transform: translateX(0%);
+          }
+          100% {
+            transform: translateX(-120%);
+          }
+        }
+        @keyframes point2 {
+          0% {
+            transform: translateX(120%);
+          }
+          100% {
+            animation: scrollingText linear 6s infinite forwards;
+          }
         }
       }
       &:hover .img {

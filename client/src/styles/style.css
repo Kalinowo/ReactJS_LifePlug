@@ -812,12 +812,51 @@ form .formGroup input {
   font-weight: bold;
   padding: 0 5px 0;
 }
-.homePageOuter .animeListOuter .animeListBox .animeNameBox .name {
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 1;
+.homePageOuter .animeListOuter .animeListBox .animeNameBox .name,
+.homePageOuter .animeListOuter .animeListBox .animeNameBox .scroll {
   overflow: hidden;
   text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.homePageOuter .animeListOuter .animeListBox .animeNameBox:hover > .scroll {
+  width: 100%;
+  overflow: visible;
+  -webkit-animation: scrollingText linear 6s infinite forwards, point2 linear 6s 6s infinite forwards;
+          animation: scrollingText linear 6s infinite forwards, point2 linear 6s 6s infinite forwards;
+}
+@-webkit-keyframes scrollingText {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-120%);
+  }
+}
+@keyframes scrollingText {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-120%);
+  }
+}
+@-webkit-keyframes point2 {
+  0% {
+    transform: translateX(120%);
+  }
+  100% {
+    -webkit-animation: scrollingText linear 6s infinite forwards;
+            animation: scrollingText linear 6s infinite forwards;
+  }
+}
+@keyframes point2 {
+  0% {
+    transform: translateX(120%);
+  }
+  100% {
+    -webkit-animation: scrollingText linear 6s infinite forwards;
+            animation: scrollingText linear 6s infinite forwards;
+  }
 }
 .homePageOuter .animeListOuter .animeListBox:hover .img {
   transform: scale(1.15);
@@ -1863,80 +1902,4 @@ form .formGroup input {
   .watchHistoryOuter .historyBox {
     text-shadow: 1px 1px 3px rgb(90, 90, 90);
   }
-}
-
-section {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 75px;
-  background: transparent;
-  -webkit-animation: animateBackgroundC0olor 10s linear infinite;
-          animation: animateBackgroundC0olor 10s linear infinite;
-}
-@-webkit-keyframes animateBackgroundC0olor {
-  0% {
-    filter: hue-rotate(0deg);
-  }
-  100% {
-    filter: hue-rotate(360deg);
-  }
-}
-@keyframes animateBackgroundC0olor {
-  0% {
-    filter: hue-rotate(0deg);
-  }
-  100% {
-    filter: hue-rotate(360deg);
-  }
-}
-section .loading {
-  position: relative;
-  width: 250px;
-  height: 250px;
-  transform: scale(0.3);
-}
-section .loading .blocks {
-  position: absolute;
-  width: 8px;
-  height: 25px;
-  background: #050c09;
-  left: 50%;
-  border-radius: 8px;
-  transform: rotate(calc(18deg * var(--i)));
-  transform-origin: 0 125px;
-  -webkit-animation: animate 1.9s ease-in-out infinite;
-          animation: animate 1.9s ease-in-out infinite;
-  -webkit-animation-delay: calc(0.05s * var(--i));
-          animation-delay: calc(0.05s * var(--i));
-}
-@-webkit-keyframes animate {
-  0%, 50% {
-    background: #050c09;
-    box-shadow: none;
-  }
-  50.1%, 100% {
-    background: #0f0;
-    box-shadow: 0 0 5px #0f0, 0 0 15px #0f0, 0 0 30px #0f0, 0 0 60px #0f0, 0 0 90px #0f0;
-  }
-}
-@keyframes animate {
-  0%, 50% {
-    background: #050c09;
-    box-shadow: none;
-  }
-  50.1%, 100% {
-    background: #0f0;
-    box-shadow: 0 0 5px #0f0, 0 0 15px #0f0, 0 0 30px #0f0, 0 0 60px #0f0, 0 0 90px #0f0;
-  }
-}
-section h3 {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 2em;
-  letter-spacing: 2px;
-  color: #0f0;
-  text-shadow: 0 0 5px #0f0, 0 0 15px #0f0;
 }/*# sourceMappingURL=style.css.map */

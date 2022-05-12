@@ -53,7 +53,9 @@ export default function AnimeSeasonContainer(props) {
                   </div>
                 </div>
                 <div className="animeNameBox">
-                  <div className="name">{list.title}</div>
+                  <div className={list.title.length > 12 ? "scroll" : "name"}>
+                    {list.title}
+                  </div>
                 </div>
               </Link>
             </React.Fragment>
