@@ -1,9 +1,12 @@
 import React, { Suspense } from "react";
 import { GlobalContext } from "../../Context/GlobalState";
 import AnimeService from "../../services/anime.service";
-import AnimeSeasonContainer from "./Anime/AnimeSeasonContainer";
+// import AnimeSeasonContainer from "./Anime/AnimeSeasonContainer";
 import AnimeSearchPage from "./Anime/AnimeSearchPage";
 const PostAnime = React.lazy(() => import("../AdminPower/PostAnime"));
+const AnimeSeasonContainer = React.lazy(() =>
+  import("./Anime/AnimeSeasonContainer")
+);
 
 export default function HomePage(props) {
   const { pop, setPop, theme } = React.useContext(GlobalContext);
@@ -12,6 +15,10 @@ export default function HomePage(props) {
   const [getEveryAnime, setEveryAnime] = React.useState(null);
   const [searchTerm, setSearchTerm] = React.useState("");
   const [forceRefresh, setForceRefresh] = React.useState(0);
+
+  React.useEffect(() => {
+    document.title = "LifePlug";
+  }, []);
 
   React.useEffect(() => {
     AnimeService.getEveryAnime().then((data) => {
@@ -82,13 +89,28 @@ export default function HomePage(props) {
             </button>
           </div>
         )}
-        {searchTerm !== "" && (
+        {searchTerm && (
           <AnimeSearchPage animeData={getEveryAnime} searchTerm={searchTerm} />
         )}
         {animeData &&
           searchTerm === "" &&
           animeData.map((season, index) => (
-            <AnimeSeasonContainer key={index} season={season} />
+            <Suspense
+              fallback={
+                <div
+                  style={{
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    fontSize: "30px",
+                  }}
+                >
+                  Loading...
+                </div>
+              }
+            >
+              <AnimeSeasonContainer key={index} season={season} />
+            </Suspense>
           ))}
       </div>
     </React.Fragment>
