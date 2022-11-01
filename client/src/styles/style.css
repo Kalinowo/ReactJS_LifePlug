@@ -4,10 +4,7 @@
   --background-secondary: #ffffff;
   --background-tertiary: #2830487c;
   --text-primary: #000;
-<<<<<<< HEAD
-=======
   --text-tertiary: white;
->>>>>>> c7384e2 (added a load button for more content)
   --accent: #8e05c2;
   --border: #808080;
   --form-bg: #fff;
@@ -18,10 +15,7 @@
   --background-secondary: #3a3a3c;
   --background-tertiary: #283048c4;
   --text-primary: #fff;
-<<<<<<< HEAD
-=======
   --text-tertiary: black;
->>>>>>> c7384e2 (added a load button for more content)
   --text-secondary: rgb(231, 142, 59);
   --accent: #8e05c2;
   --border: #808080;
@@ -872,9 +866,6 @@ form .formGroup input {
 .homePageOuter .animeListOuter .animeListBox:hover {
   color: black;
 }
-<<<<<<< HEAD
-
-=======
 .homePageOuter .loadBtnOuter {
   display: flex;
   align-items: center;
@@ -926,7 +917,6 @@ form .formGroup input {
     width: 80%;
   }
 }
->>>>>>> c7384e2 (added a load button for more content)
 .notFound {
   color: var(--text-primary);
   margin-top: 10px;
@@ -1359,6 +1349,7 @@ form .formGroup input {
   outline: none;
   font-weight: bold;
   font-weight: 300;
+  overflow: hidden;
 }
 .videoOuter .episodeOuter .episodeBox .episodeBtn:focus {
   background: lightblue;
@@ -1368,17 +1359,16 @@ form .formGroup input {
 }
 .videoOuter .episodeOuter .episodeBox .episodeBtn[class="episodeBtn lastWatch"]::after {
   position: absolute;
-  bottom: 0;
+  bottom: 0px;
   left: 0;
   content: "上次觀看";
-  font-size: 5px;
+  font-size: 13px;
   font-weight: bold;
   background: rgb(255, 133, 154);
   color: white;
-  height: 10px;
+  height: 13px;
   width: 100%;
-  line-height: 11px;
-  padding: 1px;
+  line-height: 15px;
 }
 .videoOuter .videoDetailOuter .videoDetailBox {
   display: flex;
