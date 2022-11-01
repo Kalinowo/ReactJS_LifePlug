@@ -4,6 +4,10 @@
   --background-secondary: #ffffff;
   --background-tertiary: #2830487c;
   --text-primary: #000;
+<<<<<<< HEAD
+=======
+  --text-tertiary: white;
+>>>>>>> c7384e2 (added a load button for more content)
   --accent: #8e05c2;
   --border: #808080;
   --form-bg: #fff;
@@ -14,6 +18,10 @@
   --background-secondary: #3a3a3c;
   --background-tertiary: #283048c4;
   --text-primary: #fff;
+<<<<<<< HEAD
+=======
+  --text-tertiary: black;
+>>>>>>> c7384e2 (added a load button for more content)
   --text-secondary: rgb(231, 142, 59);
   --accent: #8e05c2;
   --border: #808080;
@@ -864,7 +872,61 @@ form .formGroup input {
 .homePageOuter .animeListOuter .animeListBox:hover {
   color: black;
 }
+<<<<<<< HEAD
 
+=======
+.homePageOuter .loadBtnOuter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100px;
+  background: var(--background);
+}
+.homePageOuter .loadBtnOuter .loadBtn {
+  display: flex;
+  justify-content: center;
+  cursor: pointer;
+  border: solid var(--text-primary);
+  padding: 5px 30px;
+  margin: 0 20px 0;
+  border-radius: 10px;
+  font-size: 30px;
+  font-weight: bold;
+  color: var(--text-primary);
+  text-shadow: 1px 1px 5px var(--text-tertiary);
+  width: 100%;
+  background: var(--background-secondary);
+  transition: 1s;
+}
+.homePageOuter .loadBtnOuter .loadBtn:hover {
+  -webkit-animation: bouncingEffect 1s forwards;
+          animation: bouncingEffect 1s forwards;
+}
+
+@-webkit-keyframes bouncingEffect {
+  0% {
+    width: 100%;
+  }
+  50% {
+    width: 60%;
+  }
+  100% {
+    width: 80%;
+  }
+}
+
+@keyframes bouncingEffect {
+  0% {
+    width: 100%;
+  }
+  50% {
+    width: 60%;
+  }
+  100% {
+    width: 80%;
+  }
+}
+>>>>>>> c7384e2 (added a load button for more content)
 .notFound {
   color: var(--text-primary);
   margin-top: 10px;

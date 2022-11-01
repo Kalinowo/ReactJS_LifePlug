@@ -195,7 +195,50 @@
       }
     }
   }
+<<<<<<< HEAD
 }
+=======
+  .loadBtnOuter {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100px;
+    background: var(--background);
+    .loadBtn {
+      display: flex;
+      justify-content: center;
+      cursor: pointer;
+      border: solid var(--text-primary);
+      padding: 5px 30px;
+      margin: 0 20px 0;
+      border-radius: 10px;
+      font-size: 30px;
+      font-weight: bold;
+      color: var(--text-primary);
+      text-shadow: 1px 1px 5px var(--text-tertiary);
+      width: 100%;
+      background: var(--background-secondary);
+      transition: 1s;
+      &:hover {
+        animation: bouncingEffect 1s forwards;
+      }
+    }
+  }
+}
+
+@keyframes bouncingEffect {
+  0% {
+    width: 100%;
+  }
+  50% {
+    width: 60%;
+  }
+  100% {
+    width: 80%;
+  }
+}
+
+>>>>>>> c7384e2 (added a load button for more content)
 .notFound {
   color: var(--text-primary);
   margin-top: 10px;

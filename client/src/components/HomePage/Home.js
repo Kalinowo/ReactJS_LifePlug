@@ -16,6 +16,8 @@ export default function HomePage(props) {
   const [searchTerm, setSearchTerm] = React.useState("");
   const [forceRefresh, setForceRefresh] = React.useState(0);
 
+  const [showLimit, setShowLimit] = React.useState(5);
+
   React.useEffect(() => {
     document.title = "LifePlug";
   }, []);
@@ -62,6 +64,10 @@ export default function HomePage(props) {
     });
   }, []);
 
+  const addMoreLimit = () => {
+    setShowLimit((prev) => prev + 3);
+  };
+
   return (
     <React.Fragment>
       <Suspense fallback={<></>}>
@@ -93,8 +99,8 @@ export default function HomePage(props) {
           <AnimeSearchPage animeData={getEveryAnime} searchTerm={searchTerm} />
         )}
         {animeData &&
-          searchTerm === "" &&
-          animeData.map((season, index) => (
+          !searchTerm &&
+          animeData.slice(0, showLimit).map((season, index) => (
             <Suspense
               fallback={
                 <div
@@ -103,6 +109,7 @@ export default function HomePage(props) {
                     justifyContent: "center",
                     alignItems: "center",
                     fontSize: "30px",
+                    height: "100px",
                   }}
                 >
                   Loading...
@@ -112,6 +119,12 @@ export default function HomePage(props) {
               <AnimeSeasonContainer key={index} season={season} />
             </Suspense>
           ))}
+        {/* 顯示更多 */}
+        {animeData && !searchTerm && showLimit <= animeData.length && (
+          <div className="loadBtnOuter" onClick={addMoreLimit}>
+            <div className="loadBtn">Load more</div>
+          </div>
+        )}
       </div>
     </React.Fragment>
   );
