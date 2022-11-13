@@ -34,13 +34,14 @@ export default function HomePage(props) {
       let unique = [...new Set(dataToArray)];
       let firstData = [];
       for (let i = 0; i < unique.length; i++) {
-        let step1 = unique[i].split("");
-        let step2 = step1.slice(3, 7);
-        let step3 = step2.join("");
-        firstData.push(step3);
+        let getYear = unique[i].substring(3, 7);
+        firstData.push(getYear);
       }
+
       firstData.sort((a, b) => a - b);
       let counter = 0;
+
+      console.log(firstData);
 
       for (let i = 0; i < unique.length; i++) {
         if (counter === 0) {
@@ -102,6 +103,7 @@ export default function HomePage(props) {
           !searchTerm &&
           animeData.slice(0, showLimit).map((season, index) => (
             <Suspense
+              key={index}
               fallback={
                 <div
                   style={{
@@ -116,7 +118,7 @@ export default function HomePage(props) {
                 </div>
               }
             >
-              <AnimeSeasonContainer key={index} season={season} />
+              <AnimeSeasonContainer season={season} />
             </Suspense>
           ))}
         {/* 顯示更多 */}

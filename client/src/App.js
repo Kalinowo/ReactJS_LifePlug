@@ -1,12 +1,6 @@
 import React from "react";
 import "./styles/style.css";
-import {
-  Routes,
-  Route,
-  Link,
-  useLocation,
-  useNavigate,
-} from "react-router-dom";
+import { Routes, Route, useLocation, useNavigate } from "react-router-dom";
 import { GlobalProvider } from "./Context/GlobalState";
 import Video from "./components/VideoPage/Video";
 import WatchHistory from "./components/watchHistory";

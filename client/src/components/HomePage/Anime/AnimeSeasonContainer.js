@@ -6,23 +6,22 @@ export default function AnimeSeasonContainer(props) {
   const [animeData, setAnimeData] = React.useState(null);
   let { season } = props;
   React.useEffect(() => {
-    let step1 = season.split("");
-    let step2 = step1.slice(0, 4);
-    let step3 = step2.join("");
-    let step4 = step1.slice(5, 6);
-    let step5 = step4.join("");
+    let getSeasonYear = season.substring(0, 4);
+    let getSeasonMonth = season.substring(5, 6);
+
     let mongoFilter;
-    if (step5 === "一") {
-      mongoFilter = "Win" + step3;
+
+    if (getSeasonMonth === "一") {
+      mongoFilter = "Win" + getSeasonYear;
     }
-    if (step5 === "四") {
-      mongoFilter = "Spr" + step3;
+    if (getSeasonMonth === "四") {
+      mongoFilter = "Spr" + getSeasonYear;
     }
-    if (step5 === "七") {
-      mongoFilter = "Sum" + step3;
+    if (getSeasonMonth === "七") {
+      mongoFilter = "Sum" + getSeasonYear;
     }
-    if (step5 === "十") {
-      mongoFilter = "Fal" + step3;
+    if (getSeasonMonth === "十") {
+      mongoFilter = "Fal" + getSeasonYear;
     }
     AnimeService.getListOfAnime(mongoFilter).then((data) => {
       setAnimeData(data.data);
