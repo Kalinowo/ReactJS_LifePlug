@@ -40,7 +40,7 @@ export default function Navbar_Template(props) {
               style={
                 location.pathname === "/LifePlug"
                   ? {
-                      color: "#a3ffa0",
+                      color: "#8bc6ec",
                       filter: "drop-shadow(1px 2px 1px black)",
                     }
                   : {}
@@ -53,7 +53,7 @@ export default function Navbar_Template(props) {
               style={
                 location.pathname === "/LifePlug/watchHistory"
                   ? {
-                      color: "#a3ffa0",
+                      color: "#8bc6ec",
                       filter: "drop-shadow(1px 2px 1px black)",
                     }
                   : {}
@@ -66,7 +66,7 @@ export default function Navbar_Template(props) {
               style={
                 location.pathname === "/LifePlug/profile"
                   ? {
-                      color: "#a3ffa0",
+                      color: "#8bc6ec",
                       filter: "drop-shadow(1px 2px 1px black)",
                     }
                   : {}

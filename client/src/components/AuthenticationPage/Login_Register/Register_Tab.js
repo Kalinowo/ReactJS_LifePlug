@@ -1,6 +1,7 @@
 import React from "react";
 import Axios from "axios";
 import SAlert from "./successAlert";
+import CustomButton from "../../../UI/Button";
 
 export default function RegisterTab(props) {
   const [registerEmail, setRegisterEmail] = React.useState("");
@@ -116,9 +117,7 @@ export default function RegisterTab(props) {
         {message && <div className="alertMessage">{message}</div>}
         {successAlert > 0 && <SAlert Countdown={successAlert} />}
         <div className="registerBtnBox">
-          <button onClick={register} className="registerBtn">
-            註冊
-          </button>
+          <CustomButton children="Confirm" width="100%" />
         </div>
       </form>
     </React.Fragment>

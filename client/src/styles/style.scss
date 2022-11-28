@@ -28,7 +28,7 @@
 }
 
 body {
-  font-family: "Roboto", sans-serif;
+  font-family: "NTR", sans-serif;
 }
 
 a {
@@ -110,4 +110,5 @@ button:focus {
 }
 
 @import "./Navbar", "./_EntrancePage", "./LoginForm", "./ErrorPage",
-  "./HomePage", "./ProfilePage", "./AdminPower", "./Video", "./WatchHistory";
+  "./HomePage", "./ProfilePage", "./AdminPower", "./Video", "./WatchHistory",
+  "./CustomButton";

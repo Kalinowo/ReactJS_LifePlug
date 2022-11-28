@@ -37,25 +37,7 @@
       .updatePicBtn {
         position: absolute;
         right: 0;
-        bottom: 0;
-        width: auto;
-        height: auto;
-        font-size: 18px;
-        color: white;
-        background: gray;
-        padding: 0 5px 0 5px;
-        outline: none;
-        border-radius: 5px;
-        text-shadow: 0px 1px 2px black;
-        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2),
-          inset 0 -0.1em 0 0.1em #5a5a5a;
-        &:active {
-          background-color: #283048ad;
-          box-shadow: none;
-        }
-        &:hover {
-          color: rgb(196, 255, 172);
-        }
+        bottom: 5px;
       }
     }
     .profileInfoOuter {
@@ -78,55 +60,27 @@
           word-break: break-all;
           font-size: 20px;
         }
-        .updateNameBtn {
-          margin-left: 5px;
-          background: gray;
-          color: white;
-          width: auto;
-          height: auto;
-          padding: 0 5px 0 5px;
-          outline: none;
-          border-radius: 5px;
-          text-shadow: 0px 1px 2px black;
-          box-shadow: inset 0 1px 0 var(--background-tertiary),
-            inset 0 -0.1em 0 0.1em var(--background-tertiary);
-          &:active {
-            background-color: #283048ad;
-            box-shadow: none;
-          }
-          &:hover {
-            color: rgb(196, 255, 172);
-          }
-        }
       }
     }
     .updateNameOuter {
       position: relative;
       top: 0;
       left: 0;
+      background: white;
       margin-top: 5px;
       width: 260px;
       border: solid gray;
       border-radius: 5px;
       overflow: hidden;
       .updateForm {
+        height: 100%;
         border: none;
         outline: none;
         padding: 0 10px 0 5px;
-      }
-      .updateBtn {
-        position: absolute;
-        color: white;
-        top: 0px;
-        right: 0px;
-        width: 50px;
-        height: auto;
-        border: none;
-        outline: none;
-        background: gray;
-        text-shadow: 0px 1px 2px black;
-        &:hover {
-          color: rgb(196, 255, 172);
+        background: white;
+        &::-webkit-input-placeholder {
+          position: relative;
+          top: 3px;
         }
       }
     }

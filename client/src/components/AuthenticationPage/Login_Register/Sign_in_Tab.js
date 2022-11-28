@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { Tabs, Tab } from "react-bootstrap";
 import RegisterTab from "./Register_Tab";
 import Axios from "axios";
+import CustomButton from "../../../UI/Button";
 
 export default function SignInTab(props) {
   const { modalRef, setPop, turnPopOff } = React.useContext(GlobalContext);
@@ -99,16 +100,17 @@ export default function SignInTab(props) {
                     </label>
                   </div>
                   {message && <div className="alertMessage">{message}</div>}
-                  <div className="submitBox">
-                    <button onClick={login} className="submitBtn">
-                      登入
-                    </button>
-                    <button
-                      className="submitCancel"
+                  <div className="loginBtnWrapper">
+                    <CustomButton
+                      children="Login"
+                      width="50%"
+                      onClick={login}
+                    />
+                    <CustomButton
+                      children="Cancel"
+                      width="40%"
                       onClick={() => setPop(false)}
-                    >
-                      取消
-                    </button>
+                    />
                   </div>
                 </form>
               </Tab>

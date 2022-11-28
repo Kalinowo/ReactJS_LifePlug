@@ -4,6 +4,8 @@ import SelectDP from "./SelectDP";
 import ProfileService from "../../services/profile.service";
 import { useNavigate } from "react-router-dom";
 
+import CustomButton from "../../UI/Button";
+
 export default function Profile(props) {
   const { pop, setPop, theme } = React.useContext(GlobalContext);
   const [userInfo, setUserInfo] = React.useState(null);
@@ -57,9 +59,9 @@ export default function Profile(props) {
                 src={userInfo[0].picture}
                 alt="profilePic"
               />
-              <button className="updatePicBtn" onClick={() => setPop(!pop)}>
-                更改圖片
-              </button>
+              <span className="updatePicBtn">
+                <CustomButton children="Edit" onClick={() => setPop(!pop)} />
+              </span>
             </div>
             {!currentUser && (
               <div>You must login first before getting your profile.</div>
@@ -70,9 +72,10 @@ export default function Profile(props) {
                 <div className="profileName">
                   名稱：
                   <span className="name">{userInfo[0].nickname}</span>
-                  <button className="updateNameBtn" onClick={updateNameTrigger}>
-                    {updateNameBtn === false ? "更改名稱" : "取消"}
-                  </button>
+                  <CustomButton
+                    children={updateNameBtn === false ? "Edit" : "Cancel"}
+                    onClick={updateNameTrigger}
+                  />
                 </div>
                 <form
                   className="updateNameOuter"
@@ -87,9 +90,7 @@ export default function Profile(props) {
                     onChange={(e) => setUpdateName(e.target.value)}
                     placeholder="請輸入名稱..."
                   />
-                  <button className="updateBtn" onClick={updatedName}>
-                    確定
-                  </button>
+                  <CustomButton children="OK" onClick={updatedName} />
                 </form>
                 <div className="profileName">職位：{userInfo[0].role}</div>
               </div>

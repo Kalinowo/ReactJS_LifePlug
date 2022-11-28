@@ -3,6 +3,7 @@ import { GlobalContext } from "../../Context/GlobalState";
 import AnimeService from "../../services/anime.service";
 // import AnimeSeasonContainer from "./Anime/AnimeSeasonContainer";
 import AnimeSearchPage from "./Anime/AnimeSearchPage";
+import CustomButton from "../../UI/Button";
 const PostAnime = React.lazy(() => import("../AdminPower/PostAnime"));
 const AnimeSeasonContainer = React.lazy(() =>
   import("./Anime/AnimeSeasonContainer")
@@ -91,9 +92,14 @@ export default function HomePage(props) {
         </form>
         {currentUser && currentUser.user.role === "Admin" && (
           <div className="AdminPostBtnOuter">
-            <button className="postBtn" onClick={() => setPop(true)}>
-              post Anime
-            </button>
+            <CustomButton
+              children="Post Anime"
+              width="90%"
+              height="45px"
+              fontSize="35px"
+              lineHeight="50px"
+              onClick={() => setPop(true)}
+            />
           </div>
         )}
         {searchTerm && (
@@ -124,7 +130,14 @@ export default function HomePage(props) {
         {/* 顯示更多 */}
         {animeData && !searchTerm && showLimit <= animeData.length && (
           <div className="loadBtnOuter" onClick={addMoreLimit}>
-            <div className="loadBtn">Load more</div>
+            <CustomButton
+              children="Load more"
+              width="90%"
+              height="50px"
+              fontSize="35px"
+              lineHeight="55px"
+            />
+            {/* <div className="loadBtn">Load more</div> */}
           </div>
         )}
       </div>

@@ -1,6 +1,7 @@
 import React from "react";
 import { GlobalContext } from "../../Context/GlobalState";
 import AnimeService from "../../services/anime.service";
+import CustomButton from "../../UI/Button";
 
 export default function PostAnime({ setForceRefresh }) {
   const { modalRef, setPop, turnPopOff } = React.useContext(GlobalContext);
@@ -113,9 +114,7 @@ export default function PostAnime({ setForceRefresh }) {
                 onChange={(e) => setIntro(e.target.value)}
               ></textarea>
             </div>
-            <button className="submitBtn" onClick={postAnime}>
-              新增
-            </button>
+            <CustomButton children="Confirm" width="80%" onClick={postAnime} />
           </form>
         </div>
       </div>
