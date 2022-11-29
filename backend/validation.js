@@ -27,6 +27,7 @@ const animeValidation = (data) => {
     director: Joi.string().required(),
     agent: Joi.string().required(),
     producer: Joi.string().required(),
+    blurHash: Joi.string().required(),
     intro: Joi.string().required(),
   });
   return schema.validate(data);

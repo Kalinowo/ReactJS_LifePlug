@@ -37,6 +37,10 @@ const animeSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  blurHash: {
+    type: String,
+    required: true,
+  },
   intro: {
     type: String,
     required: true,

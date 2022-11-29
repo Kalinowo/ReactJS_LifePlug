@@ -6,19 +6,22 @@ export default function Intro(props) {
   return (
     <div className="videoIntroOuter">
       <div className="title">劇情簡介</div>
-      <div
-        className="intro"
-        style={openIntro ? { maxHeight: "150px" } : { maxHeight: "0px" }}
-      >
-        &emsp;{anime[0].intro}
+      <div className="introWrapper">
+        <button
+          className="btn"
+          style={{ width: "100%" }}
+          onClick={() => setOpenIntro(!openIntro)}
+        >
+          {openIntro ? "只顯示部分內容" : "顯示完整內容"}
+        </button>
+        <div
+          className="intro"
+          style={openIntro ? null : { maxHeight: "20px" }}
+          onClick={() => setOpenIntro(!openIntro)}
+        >
+          &emsp;{anime[0].intro}
+        </div>
       </div>
-      <button
-        className="btn"
-        style={{ width: "100%" }}
-        onClick={() => setOpenIntro(!openIntro)}
-      >
-        {openIntro ? "收起" : "展開"}
-      </button>
     </div>
   );
 }

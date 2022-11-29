@@ -68,6 +68,7 @@
         background: red;
         border: solid 3px;
         border-radius: 5px;
+        overflow: hidden;
         &:hover .remove {
           width: 52px;
         }
@@ -78,15 +79,14 @@
         }
         .fas.fa-times {
           color: white;
-          font-size: 5px;
+          font-size: 10px;
           background: red;
           border: solid red;
           border-radius: 5px;
-          height: 16px;
         }
         .remove {
           color: white;
-          font-size: 3px;
+          font-size: 13px;
           font-weight: bold;
           background: red;
           width: 0px;
@@ -167,33 +167,38 @@
     }
   }
   .videoIntroOuter {
+    position: relative;
     text-align: left;
-    margin: 10px 15px;
+    margin: 0px 15px 30px;
+    height: 100%;
     .title {
       color: var(--text-primary);
       font-size: 18px;
       border-bottom: 1px solid var(--text-primary);
     }
-    .intro {
-      color: var(--text-primary);
-      font-size: 14px;
-      overflow: hidden;
-      transition: 0.5s linear;
-      height: auto;
-      line-height: 25px;
-    }
-    .btn {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: rgba(211, 224, 203, 0.5);
-      height: 20px;
-      color: var(--text-primary);
-      &:focus {
-        box-shadow: none;
+    .introWrapper {
+      position: relative;
+      height: 100%;
+      width: 100%;
+      .btn {
+        position: absolute;
+        bottom: -20px;
+        background: rgba(211, 224, 203, 0.5);
+        height: 20px;
+        line-height: 10px;
+        color: var(--text-primary);
+        z-index: 10;
+        &:hover + .intro {
+          background: #8bc5ec75;
+        }
       }
-      &:hover {
-        font-weight: bold;
+      .intro {
+        position: relative;
+        color: var(--text-primary);
+        font-size: 14px;
+        overflow: hidden;
+        height: auto;
+        line-height: 25px;
       }
     }
   }
@@ -347,6 +352,7 @@
             height: 0;
             margin-left: 5px;
             overflow: hidden;
+            border: solid var(--text-primary);
             @include pad {
               padding-bottom: 10%;
               flex-basis: 20%;
@@ -389,12 +395,13 @@
               }
               .user {
                 font-weight: bold;
+                font-size: 18px;
               }
               .date {
                 position: relative;
                 top: 1px;
                 margin: 0 5px;
-                font-size: 8px;
+                font-size: 15px;
               }
             }
             .msg {
@@ -446,6 +453,7 @@
           display: flex;
           flex-direction: row;
           background: rgba(211, 211, 211, 0.5);
+          margin-bottom: 3px;
           .imgBox {
             position: relative;
             margin-left: 5px;
@@ -455,6 +463,9 @@
             flex-basis: 10%;
             height: 0;
             overflow: hidden;
+            // border: solid #8bc6ec;
+            border-left: solid var(--text-primary);
+            border-right: solid var(--text-primary);
             @include pad {
               padding-bottom: 10%;
               flex-basis: 20%;
@@ -498,12 +509,13 @@
               }
               .user {
                 font-weight: bold;
+                font-size: 18px;
               }
               .date {
                 position: relative;
                 top: 1px;
                 margin: 0 5px;
-                font-size: 8px;
+                font-size: 15px;
               }
             }
             .msg {

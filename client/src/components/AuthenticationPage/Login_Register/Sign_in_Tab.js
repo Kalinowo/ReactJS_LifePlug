@@ -9,13 +9,13 @@ import CustomButton from "../../../UI/Button";
 export default function SignInTab(props) {
   const { modalRef, setPop, turnPopOff } = React.useContext(GlobalContext);
   const [key, setKey] = React.useState("signin");
-  let navigate = useNavigate();
   const [loginEmail, setLoginEmail] = React.useState("");
   const [loginPassword, setLoginPassword] = React.useState("");
   const [message, setMessage] = React.useState("");
   const [remember, setRemember] = React.useState(false);
-  let { setCurrentUser } = props;
 
+  let { setCurrentUser } = props;
+  let navigate = useNavigate();
   const login = () => {
     Axios.post("http://localhost:4000/api/user/login", {
       username: loginEmail,

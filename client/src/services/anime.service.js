@@ -2,7 +2,18 @@ import axios from "axios";
 const API_URL = "http://localhost:4000/api/animes";
 
 class AnimeService {
-  post(title, engName, img, year, genre, director, agent, producer, intro) {
+  post(
+    title,
+    engName,
+    img,
+    year,
+    genre,
+    director,
+    agent,
+    producer,
+    blurHash,
+    intro
+  ) {
     let token;
     if (localStorage.getItem("user")) {
       token = JSON.parse(localStorage.getItem("user")).token;
@@ -21,6 +32,7 @@ class AnimeService {
         director,
         agent,
         producer,
+        blurHash,
         intro,
       },
       {
@@ -30,6 +42,7 @@ class AnimeService {
       }
     );
   }
+
   postEpisode(link, title) {
     let token;
     if (localStorage.getItem("user")) {

@@ -26,8 +26,9 @@ export default function HomePage(props) {
   React.useEffect(() => {
     AnimeService.getEveryAnime().then((data) => {
       setEveryAnime(data.data);
+      console.log("執行");
     });
-  }, []);
+  }, [forceRefresh]);
 
   React.useEffect(() => {
     AnimeService.getListOfSeason().then((data) => {
@@ -41,8 +42,6 @@ export default function HomePage(props) {
 
       firstData.sort((a, b) => a - b);
       let counter = 0;
-
-      console.log(firstData);
 
       for (let i = 0; i < unique.length; i++) {
         if (counter === 0) {
@@ -69,6 +68,9 @@ export default function HomePage(props) {
   const addMoreLimit = () => {
     setShowLimit((prev) => prev + 3);
   };
+
+  console.log(forceRefresh);
+  console.log(getEveryAnime);
 
   return (
     <React.Fragment>
@@ -124,7 +126,10 @@ export default function HomePage(props) {
                 </div>
               }
             >
-              <AnimeSeasonContainer season={season} />
+              <AnimeSeasonContainer
+                season={season}
+                forceRefresh={forceRefresh}
+              />
             </Suspense>
           ))}
         {/* 顯示更多 */}

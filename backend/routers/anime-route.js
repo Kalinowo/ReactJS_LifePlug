@@ -86,8 +86,18 @@ router.post("/", async (req, res) => {
     return res.send("only Admin can post an anime");
   }
 
-  let { title, engName, img, year, genre, director, agent, producer, intro } =
-    req.body;
+  let {
+    title,
+    engName,
+    img,
+    year,
+    genre,
+    director,
+    agent,
+    producer,
+    blurHash,
+    intro,
+  } = req.body;
 
   let newAnime = new Anime({
     title,
@@ -98,6 +108,7 @@ router.post("/", async (req, res) => {
     director,
     agent,
     producer,
+    blurHash,
     intro,
   });
 

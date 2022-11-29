@@ -13,6 +13,7 @@ export default function PostAnime({ setForceRefresh }) {
   const [director, setDirector] = React.useState("");
   const [agent, setAgent] = React.useState("");
   const [producer, setProducer] = React.useState("");
+  const [blurHash, setBlurHash] = React.useState("");
   const [intro, setIntro] = React.useState("");
 
   let inputCSS = {
@@ -32,14 +33,16 @@ export default function PostAnime({ setForceRefresh }) {
       director,
       agent,
       producer,
+      blurHash,
       intro
     )
       .then((data) => {
         setForceRefresh((prev) => prev + 1);
         setPop(false);
+        console.log(data.data);
       })
       .catch((error) => {
-        console.log(error.response);
+        console.log(`錯誤:${error.response}`);
       });
   };
   return (
@@ -105,6 +108,13 @@ export default function PostAnime({ setForceRefresh }) {
                 onChange={(e) => setProducer(e.target.value)}
               ></input>
               <label style={producer !== "" ? inputCSS : {}}>供應商</label>
+            </div>
+            <div className="formGroup2">
+              <input
+                value={blurHash}
+                onChange={(e) => setBlurHash(e.target.value)}
+              ></input>
+              <label style={blurHash !== "" ? inputCSS : {}}>blurHash</label>
             </div>
             <div className="formGroup2">
               <textarea
