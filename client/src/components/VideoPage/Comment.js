@@ -37,7 +37,7 @@ export default function Comment(props) {
     CommentService.thumbs(_id, thumb, user_id, type).then((res) => {
       if (res.data === "資料遭到串改") {
         localStorage.removeItem("user");
-        navigate("/");
+        navigate("/", { replace: true });
       } else {
         setForceRefresh((prev) => prev + 1);
       }
@@ -49,7 +49,7 @@ export default function Comment(props) {
     CommentService.pullThumb(_id, thumb, user_id, type).then((res) => {
       if (res.data === "資料遭到串改") {
         localStorage.removeItem("user");
-        navigate("/");
+        navigate("/", { replace: true });
       } else {
         setForceRefresh((prev) => prev + 1);
       }

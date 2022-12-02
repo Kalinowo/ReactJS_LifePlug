@@ -35,7 +35,6 @@ export default function Video(props) {
   }
 
   const youtubeState = (e) => {
-    console.log(e.target.playerInfo.playerState);
     // const duration = e.target.getDuration();
     const currentTime = e.target.getCurrentTime();
 
@@ -120,8 +119,6 @@ export default function Video(props) {
       }
     });
   }
-
-  console.log(remoteControl);
 
   const opts = {
     playerVars: {

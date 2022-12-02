@@ -6,31 +6,8 @@ router.use((req, res, next) => {
   next();
 });
 
-router.get("/getComment", (req, res) => {
-  let { episode } = req.query;
-  Comment.find({ episode })
-    .populate("user", ["username", "picture"])
-    .then((data) => {
-      res.send(data);
-    })
-    .catch((error) => {
-      console.log(error);
-    });
-});
-
-router.get("/getReply", (req, res) => {
-  let { episode } = req.query;
-  Comment.find({ episode, type: ["reply", "delete"] })
-    .populate("user", ["username", "picture"])
-    .then((data) => {
-      res.send(data);
-    })
-    .catch((error) => {
-      console.log(error);
-    });
-});
-
-router.post("/comment", async (req, res) => {
+//POST comment
+router.post("", async (req, res) => {
   let { comment, episode, type } = req.body;
   let newComment = new Comment({
     user: req.user._id,
@@ -44,6 +21,32 @@ router.post("/comment", async (req, res) => {
   } catch (error) {
     res.send(error);
   }
+});
+
+//GET every comments
+router.get("", (req, res) => {
+  let { episode } = req.query;
+  Comment.find({ episode })
+    .populate("user", ["username", "picture"])
+    .then((data) => {
+      res.send(data);
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+});
+
+//  ??
+router.get("/getReply", (req, res) => {
+  let { episode } = req.query;
+  Comment.find({ episode, type: ["reply", "delete"] })
+    .populate("user", ["username", "picture"])
+    .then((data) => {
+      res.send(data);
+    })
+    .catch((error) => {
+      console.log(error);
+    });
 });
 
 router.post("/reply", async (req, res) => {
@@ -71,14 +74,17 @@ router.post("/reply", async (req, res) => {
   }
 });
 
+//PATCH toggle like
 router.patch("/thumbs", async (req, res) => {
   let { _id, thumb, user_id, type } = req.body;
+
+  if (req.user.id !== user_id) {
+    res.send("資料遭到串改");
+  }
+
   try {
     let comment = await Comment.findOne({ _id });
     if (type === "comment") {
-      if (req.user.id !== user_id) {
-        res.send("資料遭到串改");
-      }
       if (thumb === "like") {
         comment.like.addToSet(req.user.id);
         comment.dislike.pull(req.user.id);
@@ -127,6 +133,7 @@ router.patch("/thumbs", async (req, res) => {
   }
 });
 
+//
 router.patch("/cancelthumb", async (req, res) => {
   let { _id, thumb, user_id, type } = req.body;
   try {

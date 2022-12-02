@@ -25,7 +25,7 @@ export default function AnimeSeasonContainer(props) {
     if (getSeasonMonth === "十") {
       mongoFilter = "Fal" + getSeasonYear;
     }
-    AnimeService.getListOfAnime(mongoFilter).then((data) => {
+    AnimeService.getFilteredAnimeBySeason(mongoFilter).then((data) => {
       setAnimeData(data.data);
     });
   }, [forceRefresh]);

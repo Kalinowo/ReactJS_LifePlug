@@ -26,7 +26,6 @@ export default function HomePage(props) {
   React.useEffect(() => {
     AnimeService.getEveryAnime().then((data) => {
       setEveryAnime(data.data);
-      console.log("執行");
     });
   }, [forceRefresh]);
 
@@ -68,9 +67,6 @@ export default function HomePage(props) {
   const addMoreLimit = () => {
     setShowLimit((prev) => prev + 3);
   };
-
-  console.log(forceRefresh);
-  console.log(getEveryAnime);
 
   return (
     <React.Fragment>

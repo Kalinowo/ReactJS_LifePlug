@@ -7,8 +7,6 @@ export default function LoginPage(props) {
 
   let { redirect, setCurrentUser } = props;
 
-  console.log(redirect);
-
   React.useEffect(() => {
     if (redirect.current) {
       setPop(true);

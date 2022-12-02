@@ -9,7 +9,8 @@ router.use((req, res, next) => {
   next();
 });
 
-router.get("/everyAnime", (req, res) => {
+//GET every Animes
+router.get("", (req, res) => {
   Anime.find({})
     .select([
       "-_id",
@@ -28,7 +29,8 @@ router.get("/everyAnime", (req, res) => {
     });
 });
 
-router.get("/getListOfSeason", (req, res) => {
+//GET all anime seasons
+router.get("/seasons", (req, res) => {
   Anime.find({}, "year")
     .select("-_id")
     .then((anime) => {
@@ -39,6 +41,7 @@ router.get("/getListOfSeason", (req, res) => {
     });
 });
 
+//GET filter Anime by season
 router.get("/:season", (req, res) => {
   let { season } = req.params;
   Anime.find({ year: season })
@@ -50,7 +53,8 @@ router.get("/:season", (req, res) => {
     });
 });
 
-router.post("/uploadEpisode", async (req, res) => {
+//POST episode
+router.post("/episode", async (req, res) => {
   let { link, title } = req.body;
   if (req.user.isMember()) {
     return res.send("only Admin can upload an episode");
@@ -65,6 +69,7 @@ router.post("/uploadEpisode", async (req, res) => {
   }
 });
 
+//GET one video
 router.get("/video/:one", (req, res) => {
   let { one } = req.params;
   Anime.find({ engName: one })
@@ -76,7 +81,8 @@ router.get("/video/:one", (req, res) => {
     });
 });
 
-router.post("/", async (req, res) => {
+//POST new Anime
+router.post("", async (req, res) => {
   const { error } = animeValidation(req.body);
   if (error) {
     return res.send(error.details[0].message);
@@ -125,7 +131,8 @@ router.post("/", async (req, res) => {
   }
 });
 
-router.delete("/video/deleteOne", async (req, res) => {
+//Delete episode
+router.delete("/episode", async (req, res) => {
   let { link } = req.query;
   if (req.user.isMember()) {
     return res.send("only Admin can delete an episode");
@@ -141,7 +148,8 @@ router.delete("/video/deleteOne", async (req, res) => {
   }
 });
 
-router.post("/click", async (req, res) => {
+//POST views
+router.post("/views", async (req, res) => {
   let { user_id, title } = req.body;
   try {
     if (req.user.id === user_id) {

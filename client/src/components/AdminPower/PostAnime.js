@@ -24,7 +24,7 @@ export default function PostAnime({ setForceRefresh }) {
   };
 
   const postAnime = () => {
-    AnimeService.post(
+    AnimeService.postAnime(
       title,
       engName,
       img,

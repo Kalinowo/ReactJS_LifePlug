@@ -2,7 +2,7 @@ import axios from "axios";
 const API_URL = "http://localhost:4000/api/animes";
 
 class AnimeService {
-  post(
+  postAnime(
     title,
     engName,
     img,
@@ -51,7 +51,7 @@ class AnimeService {
       token = "";
     }
     return axios.post(
-      API_URL + "/uploadEpisode",
+      API_URL + "/episode/",
       {
         link,
         title,
@@ -71,14 +71,14 @@ class AnimeService {
     } else {
       token = "";
     }
-    return axios.get(API_URL + "/everyAnime", {
+    return axios.get(API_URL, {
       headers: {
         Authorization: token,
       },
     });
   }
 
-  getListOfAnime(season) {
+  getFilteredAnimeBySeason(season) {
     let token;
     if (localStorage.getItem("user")) {
       token = JSON.parse(localStorage.getItem("user")).token;
@@ -99,7 +99,7 @@ class AnimeService {
     } else {
       token = "";
     }
-    return axios.get(API_URL + "/getListOfSeason", {
+    return axios.get(API_URL + "/seasons", {
       headers: {
         Authorization: token,
       },
@@ -127,7 +127,7 @@ class AnimeService {
     } else {
       token = "";
     }
-    return axios.delete(API_URL + "/video/deleteOne", {
+    return axios.delete(API_URL + "/episode", {
       params: {
         link: link,
       },
@@ -145,7 +145,7 @@ class AnimeService {
       token = "";
     }
     return axios.post(
-      API_URL + "/click",
+      API_URL + "/views",
       {
         user_id,
         title,

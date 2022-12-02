@@ -10,7 +10,7 @@ class CommentService {
       token = "";
     }
     return axios.post(
-      API_URL + "/comment",
+      API_URL,
       {
         comment,
         episode,
@@ -52,7 +52,7 @@ class CommentService {
     } else {
       token = "";
     }
-    return axios.get(API_URL + "/getComment", {
+    return axios.get(API_URL, {
       params: {
         episode: episode,
       },

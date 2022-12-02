@@ -26,7 +26,7 @@ export default function SignInTab(props) {
           localStorage.setItem("user", JSON.stringify(res.data));
           setCurrentUser(JSON.parse(localStorage.getItem("user")));
           setPop(false);
-          navigate("/LifePlug");
+          navigate("/LifePlug", { replace: true });
         } else {
           setMessage("帳號或密碼錯誤");
         }

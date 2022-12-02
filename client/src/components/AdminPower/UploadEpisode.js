@@ -1,6 +1,7 @@
 import React from "react";
 import { GlobalContext } from "../../Context/GlobalState";
 import AnimeService from "../../services/anime.service";
+import CustomButton from "../../UI/Button";
 
 export default function UploadEpisode(props) {
   const { modalRef, setPop, turnPopOff } = React.useContext(GlobalContext);
@@ -14,11 +15,13 @@ export default function UploadEpisode(props) {
   };
 
   const postEpisode = () => {
-    let title = props.Anime[0].title;
-    AnimeService.postEpisode(link, title).then((data) => {
-      props.setForceRefresh((prev) => prev + 1);
-      setPop(false);
-    });
+    if (link) {
+      let title = props.Anime[0].title;
+      AnimeService.postEpisode(link, title).then((data) => {
+        props.setForceRefresh((prev) => prev + 1);
+        setPop(false);
+      });
+    }
   };
 
   return (
@@ -34,9 +37,7 @@ export default function UploadEpisode(props) {
               ></input>
               <label style={link !== "" ? inputCSS : {}}>網址</label>
             </div>
-            <button className="submitBtn" onClick={postEpisode}>
-              新增
-            </button>
+            <CustomButton children="confirm" onClick={postEpisode} />
           </form>
         </div>
       </div>

@@ -20,7 +20,7 @@ export default function Navbar_Template(props) {
   const logout = () => {
     localStorage.removeItem("user");
     setCurrentUser(null);
-    navigate("/");
+    navigate("/", { replace: true });
   };
 
   return (
@@ -36,6 +36,7 @@ export default function Navbar_Template(props) {
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
             <Link
+              replace="true"
               to="/LifePlug"
               style={
                 location.pathname === "/LifePlug"
@@ -49,6 +50,7 @@ export default function Navbar_Template(props) {
               Home
             </Link>
             <Link
+              replace="true"
               to="/LifePlug/watchHistory"
               style={
                 location.pathname === "/LifePlug/watchHistory"
@@ -62,6 +64,7 @@ export default function Navbar_Template(props) {
               觀看紀錄
             </Link>
             <Link
+              replace="true"
               to="/LifePlug/profile"
               style={
                 location.pathname === "/LifePlug/profile"
