@@ -1,3 +1,12 @@
+.fakeBody {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--background);
+}
+
 .active.navbar {
   transform: translateY(-80px);
 }
@@ -6,7 +15,7 @@
   position: fixed;
   top: 0;
   width: 100%;
-  background-color: var(--background-tertiary);
+  background: var(--background-tertiary);
   text-shadow: 0px 1px 2px black;
   z-index: 1020;
   transition: 0.5s;

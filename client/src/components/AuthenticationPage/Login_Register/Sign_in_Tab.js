@@ -16,7 +16,8 @@ export default function SignInTab(props) {
 
   let { setCurrentUser } = props;
   let navigate = useNavigate();
-  const login = () => {
+  const login = (e) => {
+    e.preventDefault();
     Axios.post("http://localhost:4000/api/user/login", {
       username: loginEmail,
       password: loginPassword,
@@ -65,7 +66,7 @@ export default function SignInTab(props) {
                 <header className="signInTitleBox">
                   <p className="signInTitle">會員登入</p>
                 </header>
-                <form onSubmit={(e) => e.preventDefault()}>
+                <form onSubmit={login}>
                   <div className="formGroup">
                     <input
                       placeholder="E-mail"

@@ -1,6 +1,6 @@
 import React from "react";
 import "./styles/style.css";
-import { Routes, Route, useLocation, useNavigate } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
 import { GlobalProvider } from "./Context/GlobalState";
 import Video from "./components/VideoPage/Video";
 import WatchHistory from "./components/watchHistory";
@@ -15,14 +15,7 @@ export default function App() {
     JSON.parse(localStorage.getItem("user"))
   );
   let redirect = React.useRef(false);
-  let navigate = useNavigate();
   let location = useLocation();
-
-  React.useEffect(() => {
-    if (currentUser) {
-      navigate("/LifePlug", { replace: true });
-    }
-  }, []);
 
   React.useEffect(() => {
     redirect.current = true;

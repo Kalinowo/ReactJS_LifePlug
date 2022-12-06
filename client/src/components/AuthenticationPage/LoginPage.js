@@ -1,11 +1,20 @@
 import React from "react";
 import { GlobalContext } from "../../Context/GlobalState";
+import { useNavigate } from "react-router-dom";
 import SignInTab from "./Login_Register/Sign_in_Tab";
 import ReZeroBackground from "../../pic/material/ReZeroBackground.png";
 export default function LoginPage(props) {
   const { pop, setPop } = React.useContext(GlobalContext);
 
-  let { redirect, setCurrentUser } = props;
+  let { redirect, currentUser, setCurrentUser } = props;
+
+  let navigate = useNavigate();
+
+  React.useEffect(() => {
+    if (currentUser) {
+      navigate("/LifePlug", { replace: true });
+    }
+  }, []);
 
   React.useEffect(() => {
     if (redirect.current) {

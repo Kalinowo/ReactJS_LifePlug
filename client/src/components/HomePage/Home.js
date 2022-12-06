@@ -1,7 +1,6 @@
 import React, { Suspense } from "react";
 import { GlobalContext } from "../../Context/GlobalState";
 import AnimeService from "../../services/anime.service";
-// import AnimeSeasonContainer from "./Anime/AnimeSeasonContainer";
 import AnimeSearchPage from "./Anime/AnimeSearchPage";
 import CustomButton from "../../UI/Button";
 const PostAnime = React.lazy(() => import("../AdminPower/PostAnime"));

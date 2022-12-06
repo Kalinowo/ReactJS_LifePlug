@@ -8,31 +8,44 @@ import { useNavigate, Link, Outlet, useLocation } from "react-router-dom";
 export default function Navbar_Template(props) {
   const { theme, switchTheme } = React.useContext(GlobalContext);
   const [isScroll, setIsScroll] = React.useState(false);
+  const [prevScrollpos, setPrevScrollpos] = React.useState();
+
   let navigate = useNavigate();
   let location = useLocation();
   let { currentUser, setCurrentUser } = props;
+
+  const controlNavbar = () => {
+    if (typeof window !== "undefined") {
+      if (window.scrollY < prevScrollpos) {
+        setIsScroll(false);
+      } else {
+        setIsScroll(true);
+      }
+
+      // remember current page location to use in the next move
+      setPrevScrollpos(window.scrollY);
+    }
+  };
+
+  React.useEffect(() => {
+    if (window.scrollY === 0) {
+      setIsScroll(false);
+    }
+    if (typeof window !== "undefined") {
+      window.addEventListener("scroll", controlNavbar);
+
+      // cleanup function
+      return () => {
+        window.removeEventListener("scroll", controlNavbar);
+      };
+    }
+  }, [prevScrollpos]);
 
   React.useEffect(() => {
     if (!currentUser) {
       navigate("/", { replace: true });
     }
   }, [currentUser]);
-
-  React.useEffect(() => {
-    const hideNavBar = () => {
-      if (window.pageYOffset !== 0) {
-        setIsScroll(true);
-      } else {
-        setIsScroll(false);
-      }
-    };
-
-    window.addEventListener("scroll", hideNavBar);
-    return function cleanup() {
-      window.removeEventListener("scroll", hideNavBar);
-    };
-    //eslint-disable-next-line
-  }, []);
 
   const logout = () => {
     localStorage.removeItem("user");
@@ -42,6 +55,7 @@ export default function Navbar_Template(props) {
 
   return (
     <>
+      <div className="fakeBody" data-theme={theme}></div>
       <Navbar
         expand="md"
         data-theme={theme}

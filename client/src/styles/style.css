@@ -31,7 +31,6 @@
 
 body {
   font-family: "NTR", sans-serif;
-  background: black;
 }
 
 a {
@@ -111,6 +110,15 @@ button:focus {
   line-height: 60px;
 }
 
+.fakeBody {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--background);
+}
+
 .active.navbar {
   transform: translateY(-80px);
 }
@@ -119,7 +127,7 @@ button:focus {
   position: fixed;
   top: 0;
   width: 100%;
-  background-color: var(--background-tertiary);
+  background: var(--background-tertiary);
   text-shadow: 0px 1px 2px black;
   z-index: 1020;
   transition: 0.5s;
@@ -426,9 +434,9 @@ form .formGroup input {
 
 .signInOuter {
   position: relative;
-  top: 50px;
+  top: 0px;
   width: 300px;
-  height: 500px;
+  height: auto;
 }
 
 .signInBox {
@@ -543,9 +551,9 @@ form .formGroup input {
 
 .homePageOuter {
   position: relative;
-  top: 73px;
+  top: 78px;
   background: var(--background);
-  height: 90vh;
+  height: 100%;
 }
 .homePageOuter .searchOuter {
   position: relative;
@@ -820,11 +828,13 @@ form .formGroup input {
 }
 
 .profileOuter {
+  display: flex;
+  flex-direction: column;
   position: relative;
   top: 78px;
   background: var(--background);
   width: 100%;
-  height: 100vh;
+  height: 100%;
   margin: 0 auto;
 }
 .profileOuter .profileBox {
@@ -1495,7 +1505,7 @@ form .formGroup input {
 .watchHistoryOuter {
   position: relative;
   top: 78px;
-  height: 90vh;
+  height: 100%;
   display: flex;
   flex-direction: column;
   background: var(--background);
