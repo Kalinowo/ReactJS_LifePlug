@@ -11,6 +11,7 @@ const animeRoute = require("./routers").anime;
 const historyRoute = require("./routers").history;
 const profileRoute = require("./routers").profile;
 const commentRoute = require("./routers").comment;
+const likeRoute = require("./routers").like;
 // const User = require("./models").userModel;
 const passport = require("passport");
 require("./config/passport")(passport);
@@ -59,6 +60,12 @@ app.use(
   "/api/comments",
   passport.authenticate("jwt", { session: false }),
   commentRoute
+);
+
+app.use(
+  "/api/thumbs",
+  passport.authenticate("jwt", { session: false }),
+  likeRoute
 );
 
 app.listen(4000, () => {

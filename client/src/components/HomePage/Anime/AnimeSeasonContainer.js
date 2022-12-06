@@ -28,13 +28,14 @@ export default function AnimeSeasonContainer(props) {
     AnimeService.getFilteredAnimeBySeason(mongoFilter).then((data) => {
       setAnimeData(data.data);
     });
-  }, [forceRefresh]);
+  }, [season, forceRefresh]);
 
   React.useEffect(() => {
     if (!isLoaded) {
       return;
     }
-  }, []);
+  }, [isLoaded]);
+
   const handleLoad = () => {
     setIsLoaded(false);
   };

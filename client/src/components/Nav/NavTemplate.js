@@ -7,6 +7,7 @@ import { useNavigate, Link, Outlet, useLocation } from "react-router-dom";
 
 export default function Navbar_Template(props) {
   const { theme, switchTheme } = React.useContext(GlobalContext);
+  const [isScroll, setIsScroll] = React.useState(false);
   let navigate = useNavigate();
   let location = useLocation();
   let { currentUser, setCurrentUser } = props;
@@ -17,6 +18,22 @@ export default function Navbar_Template(props) {
     }
   }, [currentUser]);
 
+  React.useEffect(() => {
+    const hideNavBar = () => {
+      if (window.pageYOffset !== 0) {
+        setIsScroll(true);
+      } else {
+        setIsScroll(false);
+      }
+    };
+
+    window.addEventListener("scroll", hideNavBar);
+    return function cleanup() {
+      window.removeEventListener("scroll", hideNavBar);
+    };
+    //eslint-disable-next-line
+  }, []);
+
   const logout = () => {
     localStorage.removeItem("user");
     setCurrentUser(null);
@@ -25,7 +42,11 @@ export default function Navbar_Template(props) {
 
   return (
     <>
-      <Navbar expand="md" data-theme={theme}>
+      <Navbar
+        expand="md"
+        data-theme={theme}
+        className={isScroll ? "active" : ""}
+      >
         <Link to="/LifePlug">
           <Navbar.Brand>LifePlug</Navbar.Brand>
         </Link>

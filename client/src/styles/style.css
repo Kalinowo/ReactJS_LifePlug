@@ -1,5 +1,6 @@
 @charset "UTF-8";
 :root {
+  --mainColor: #8bc6ec;
   --background: #ffffff;
   --background-secondary: #ffffff;
   --background-tertiary: #2830487c;
@@ -30,6 +31,7 @@
 
 body {
   font-family: "NTR", sans-serif;
+  background: black;
 }
 
 a {
@@ -109,6 +111,10 @@ button:focus {
   line-height: 60px;
 }
 
+.active.navbar {
+  transform: translateY(-80px);
+}
+
 .navbar-light {
   position: fixed;
   top: 0;
@@ -116,6 +122,7 @@ button:focus {
   background-color: var(--background-tertiary);
   text-shadow: 0px 1px 2px black;
   z-index: 1020;
+  transition: 0.5s;
 }
 .navbar-light .navbar-brand {
   color: white;
@@ -685,6 +692,8 @@ form .formGroup input {
 }
 .homePageOuter .animeListOuter .animeListBox .animeNameBox .name,
 .homePageOuter .animeListOuter .animeListBox .animeNameBox .scroll {
+  height: 25px;
+  line-height: 30px;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -815,7 +824,7 @@ form .formGroup input {
   top: 78px;
   background: var(--background);
   width: 100%;
-  height: 90vh;
+  height: 100vh;
   margin: 0 auto;
 }
 .profileOuter .profileBox {
@@ -871,6 +880,7 @@ form .formGroup input {
   }
 }
 .profileOuter .profileBox .profileInfoOuter .profileName {
+  display: flex;
   color: var(--text-primary);
   font-size: 20px;
   font-weight: bold;
@@ -888,21 +898,28 @@ form .formGroup input {
   left: 0;
   background: white;
   margin-top: 5px;
-  width: 260px;
+  width: 250px;
   border: solid gray;
   border-radius: 5px;
   overflow: hidden;
 }
-.profileOuter .profileBox .updateNameOuter .updateForm {
+.profileOuter .profileBox .updateNameOuter .updateNameContainer {
+  display: flex;
+}
+.profileOuter .profileBox .updateNameOuter .updateNameContainer .updateForm {
+  flex: 1;
+  width: 100%;
   height: 100%;
   border: none;
   outline: none;
   padding: 0 10px 0 5px;
-  background: white;
 }
-.profileOuter .profileBox .updateNameOuter .updateForm::-webkit-input-placeholder {
+.profileOuter .profileBox .updateNameOuter .updateNameContainer .updateForm::-webkit-input-placeholder {
   position: relative;
   top: 3px;
+}
+.profileOuter .profileBox .updateNameOuter .updateNameContainer .customButton {
+  margin-top: 2px;
 }
 
 .selectDPOuter {
@@ -1052,36 +1069,46 @@ form .formGroup input {
   position: relative;
   top: 78px;
   background: var(--background);
+  height: 100vh;
   text-align: center;
 }
-.videoOuter .videoTitle {
+.videoOuter .videoContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  height: auto;
+  width: 100%;
+  background: var(--background);
+}
+.videoOuter .videoContainer .videoTitle {
   color: var(--text-primary);
   font-size: 30px;
   height: 100%;
   width: 100%;
   font-weight: bold;
 }
-.videoOuter .embedOuter {
+.videoOuter .videoContainer .embedOuter {
   position: relative;
+  top: 0;
   width: 90%;
-  margin: auto;
   padding-bottom: 50%;
-  height: 0;
   border: solid;
 }
-.videoOuter .embedOuter .embedStyle {
+.videoOuter .videoContainer .embedOuter .embedStyle {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
 }
-.videoOuter .episodeTitle {
+.videoOuter .videoContainer .episodeTitle {
   color: var(--text-primary);
   font-size: 20px;
   font-weight: bold;
 }
-.videoOuter .episodeOuter {
+.videoOuter .videoContainer .episodeOuter {
   position: relative;
   display: flex;
   flex-direction: row;
@@ -1090,10 +1117,10 @@ form .formGroup input {
   width: 100%;
   padding: 20px 15px;
 }
-.videoOuter .episodeOuter .episodeBox {
+.videoOuter .videoContainer .episodeOuter .episodeBox {
   position: relative;
 }
-.videoOuter .episodeOuter .episodeBox .removeBox {
+.videoOuter .videoContainer .episodeOuter .episodeBox .removeBox {
   position: absolute;
   top: -10px;
   right: -3px;
@@ -1105,22 +1132,22 @@ form .formGroup input {
   border-radius: 5px;
   overflow: hidden;
 }
-.videoOuter .episodeOuter .episodeBox .removeBox:hover .remove {
+.videoOuter .videoContainer .episodeOuter .episodeBox .removeBox:hover .remove {
   width: 52px;
 }
-.videoOuter .episodeOuter .episodeBox .removeBox:hover .fas.fa-times {
+.videoOuter .videoContainer .episodeOuter .episodeBox .removeBox:hover .fas.fa-times {
   border-left: solid black 2px;
   border-radius: 0;
   padding-left: 1px;
 }
-.videoOuter .episodeOuter .episodeBox .removeBox .fas.fa-times {
+.videoOuter .videoContainer .episodeOuter .episodeBox .removeBox .fas.fa-times {
   color: white;
   font-size: 10px;
   background: red;
   border: solid red;
   border-radius: 5px;
 }
-.videoOuter .episodeOuter .episodeBox .removeBox .remove {
+.videoOuter .videoContainer .episodeOuter .episodeBox .removeBox .remove {
   color: white;
   font-size: 13px;
   font-weight: bold;
@@ -1132,7 +1159,7 @@ form .formGroup input {
   overflow-y: hidden;
   cursor: pointer;
 }
-.videoOuter .episodeOuter .episodeBox .episodeBtn {
+.videoOuter .videoContainer .episodeOuter .episodeBox .episodeBtn {
   position: relative;
   background: white;
   color: black;
@@ -1149,13 +1176,13 @@ form .formGroup input {
   font-weight: 300;
   overflow: hidden;
 }
-.videoOuter .episodeOuter .episodeBox .episodeBtn:focus {
+.videoOuter .videoContainer .episodeOuter .episodeBox .episodeBtn:focus {
   background: lightblue;
 }
-.videoOuter .episodeOuter .episodeBox .episodeBtn[class="episodeBtn lastWatch"] {
+.videoOuter .videoContainer .episodeOuter .episodeBox .episodeBtn[class="episodeBtn lastWatch"] {
   border: solid rgb(255, 133, 154);
 }
-.videoOuter .episodeOuter .episodeBox .episodeBtn[class="episodeBtn lastWatch"]::after {
+.videoOuter .videoContainer .episodeOuter .episodeBox .episodeBtn[class="episodeBtn lastWatch"]::after {
   position: absolute;
   bottom: 0px;
   left: 0;
@@ -1168,39 +1195,49 @@ form .formGroup input {
   width: 100%;
   line-height: 15px;
 }
-.videoOuter .videoDetailOuter .videoDetailBox {
+.videoOuter .videoContainer .videoDetailOuter .videoDetailBox {
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: center;
   flex-wrap: wrap;
   list-style: none;
   font-size: 17px;
   font-weight: 400;
   color: var(--text-primary);
 }
-.videoOuter .videoDetailOuter .videoDetailBox li {
+@media (max-width: 600px) {
+  .videoOuter .videoContainer .videoDetailOuter .videoDetailBox {
+    margin-left: 10vw;
+  }
+}
+@media (max-width: 375px) {
+  .videoOuter .videoContainer .videoDetailOuter .videoDetailBox {
+    margin-left: 20vw;
+  }
+}
+.videoOuter .videoContainer .videoDetailOuter .videoDetailBox li {
   display: flex;
   flex-wrap: nowrap;
   white-space: nowrap;
-  flex-basis: 20%;
-  justify-content: center;
-  align-items: center;
   margin-right: 5px;
-  margin-bottom: 5px;
+  line-height: 31px;
 }
-.videoOuter .videoDetailOuter .videoDetailBox li span {
+.videoOuter .videoContainer .videoDetailOuter .videoDetailBox li span {
   white-space: nowrap;
-  background: gray;
+  background: linear-gradient(45deg, rgb(255, 255, 255) 0%, rgb(165, 186, 199) 50%, rgb(79, 128, 159) 100%);
   border-radius: 5px;
   margin-right: 5px;
-  color: white;
-  padding: 5px;
+  color: black;
+  font-weight: bold;
+  height: 100%;
+  line-height: 20px;
+  padding: 5px 5px 0;
 }
 .videoOuter .videoIntroOuter {
   position: relative;
+  background: var(--background);
   text-align: left;
-  margin: 0px 15px 30px;
+  margin: 0 0 30px;
   height: 100%;
 }
 .videoOuter .videoIntroOuter .title {
@@ -1211,7 +1248,7 @@ form .formGroup input {
 .videoOuter .videoIntroOuter .introWrapper {
   position: relative;
   height: 100%;
-  width: 100%;
+  width: 85vw;
 }
 .videoOuter .videoIntroOuter .introWrapper .btn {
   position: absolute;
@@ -1233,9 +1270,14 @@ form .formGroup input {
   height: auto;
   line-height: 25px;
 }
+.videoOuter .videoIntroOuter .introWrapper .intro.open {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
 .videoOuter .videoCommentOuter {
   display: flex;
   flex-direction: column;
+  width: 90%;
   margin: 0px 15px;
 }
 .videoOuter .videoCommentOuter .title {
@@ -1350,260 +1392,104 @@ form .formGroup input {
   white-space: nowrap;
   cursor: pointer;
 }
-.videoOuter .videoCommentOuter .commentOuter .commentOrderBox {
+.videoOuter .videoCommentOuter .commentOuter {
   display: flex;
+  flex-direction: column;
+  background: transparent;
+  border: solid lightblue;
   margin-top: 10px;
+  height: 100%;
 }
-.videoOuter .videoCommentOuter .commentOuter .commentOrderBox button {
-  border-radius: 5px;
-  border: solid black 2px;
-  padding: 3px;
-}
-.videoOuter .videoCommentOuter .commentOuter .commentOrderBox .hot {
-  margin-right: 5px;
-}
-.videoOuter .videoCommentOuter .commentOuter .seperate {
-  border-radius: 5px;
-  box-shadow: 0 0 5px gray;
-  margin: 5px 0;
+.videoOuter .videoCommentOuter .commentOuter .commentContainer {
+  display: flex;
+  gap: 10px;
   overflow: hidden;
 }
-.videoOuter .videoCommentOuter .commentOuter .seperate:empty {
-  display: none;
-}
-.videoOuter .videoCommentOuter .commentOuter .seperate .commentListBox {
-  position: relative;
-  margin: 10px 0;
-  display: flex;
-  flex-direction: row;
-  color: var(--text-secondary);
-}
-.videoOuter .videoCommentOuter .commentOuter .seperate .commentListBox .imgBox {
+.videoOuter .videoCommentOuter .commentOuter .commentContainer .avatarBox {
   position: relative;
   padding-bottom: 5%;
   border-radius: 5px;
   width: 100%;
   flex-basis: 10%;
-  height: 0;
-  margin-left: 5px;
+  height: 100%;
   overflow: hidden;
-  border: solid var(--text-primary);
 }
-@media (max-width: 768px) {
-  .videoOuter .videoCommentOuter .commentOuter .seperate .commentListBox .imgBox {
-    padding-bottom: 10%;
-    flex-basis: 20%;
-  }
-}
-@media (max-width: 375px) {
-  .videoOuter .videoCommentOuter .commentOuter .seperate .commentListBox .imgBox {
-    display: none;
-  }
-}
-.videoOuter .videoCommentOuter .commentOuter .seperate .commentListBox .imgBox .image {
+.videoOuter .videoCommentOuter .commentOuter .commentContainer .avatarBox .img {
   position: absolute;
+  top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   transition: 0.5s;
-}
-.videoOuter .videoCommentOuter .commentOuter .seperate .commentListBox .inputBox {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  position: relative;
-  top: 0;
-  margin-left: 10px;
-  flex-grow: 1;
-}
-@media (max-width: 375px) {
-  .videoOuter .videoCommentOuter .commentOuter .seperate .commentListBox .inputBox {
-    margin: 0;
-  }
-}
-.videoOuter .videoCommentOuter .commentOuter .seperate .commentListBox .inputBox .userBox {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  margin-top: 5px;
-}
-.videoOuter .videoCommentOuter .commentOuter .seperate .commentListBox .inputBox .userBox .floor {
-  border: solid rgb(87, 87, 87) 2px;
-  border-radius: 5px;
-  margin-right: 5px;
-  background: rgba(138, 165, 138, 0.8);
-  color: white;
-  text-shadow: 1px 1px 3px black;
-  padding: 0px 2px;
-}
-.videoOuter .videoCommentOuter .commentOuter .seperate .commentListBox .inputBox .userBox .user {
-  font-weight: bold;
-  font-size: 18px;
-}
-.videoOuter .videoCommentOuter .commentOuter .seperate .commentListBox .inputBox .userBox .date {
-  position: relative;
-  top: 1px;
-  margin: 0 5px;
-  font-size: 15px;
-}
-.videoOuter .videoCommentOuter .commentOuter .seperate .commentListBox .inputBox .msg {
-  color: var(--text-primary);
-}
-.videoOuter .videoCommentOuter .commentOuter .seperate .commentListBox .inputBox .thumbs .like {
-  cursor: pointer;
-}
-.videoOuter .videoCommentOuter .commentOuter .seperate .commentListBox .inputBox .thumbs .dislike {
-  cursor: pointer;
-  margin: 0 20px;
-}
-.videoOuter .videoCommentOuter .commentOuter .seperate .commentListBox .inputBox .thumbs .replyTrigger {
-  background: none;
-  color: var(--text-secondary);
-}
-.videoOuter .videoCommentOuter .commentOuter .seperate .commentListBox .inputBox .thumbs .deleteTrigger {
-  margin-left: 5px;
-  background: none;
-  color: var(--text-secondary);
-}
-.videoOuter .videoCommentOuter .commentOuter .seperate .commentListBox .inputBox .replyInput {
-  border: solid rgba(111, 131, 111, 0.8);
-  border-radius: 10px;
-  overflow: hidden;
-}
-.videoOuter .videoCommentOuter .commentOuter .seperate .commentListBox .inputBox .replyInput input {
-  border: none;
-  padding: 0 10px;
-}
-.videoOuter .videoCommentOuter .commentOuter .seperate .commentListBox .inputBox .replyInput input:focus {
-  outline: none;
-}
-.videoOuter .videoCommentOuter .commentOuter .seperate .commentListBox .inputBox .replyInput button {
-  padding: 0 10px;
-  background: silver;
-  color: white;
-  text-shadow: 1px 1px 2px black;
-}
-.videoOuter .videoCommentOuter .commentOuter .seperate .commentListBox .inputBox .replyInput button:hover {
-  background: rgba(111, 131, 111, 0.8);
-}
-.videoOuter .videoCommentOuter .commentOuter .seperate .replyListBox {
-  position: relative;
-  display: flex;
-  flex-direction: row;
-  background: rgba(211, 211, 211, 0.5);
-  margin-bottom: 3px;
-}
-.videoOuter .videoCommentOuter .commentOuter .seperate .replyListBox .imgBox {
-  position: relative;
-  margin-left: 5px;
-  padding-bottom: 5%;
-  border-radius: 5px;
-  width: 100%;
-  flex-basis: 10%;
-  height: 0;
-  overflow: hidden;
-  border-left: solid var(--text-primary);
   border-right: solid var(--text-primary);
+  border-left: solid var(--text-primary);
 }
-@media (max-width: 768px) {
-  .videoOuter .videoCommentOuter .commentOuter .seperate .replyListBox .imgBox {
-    padding-bottom: 10%;
-    flex-basis: 20%;
-  }
-}
-@media (max-width: 375px) {
-  .videoOuter .videoCommentOuter .commentOuter .seperate .replyListBox .imgBox {
-    display: none;
-  }
-}
-.videoOuter .videoCommentOuter .commentOuter .seperate .replyListBox .imgBox .image {
-  position: absolute;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  transition: 0.5s;
-}
-.videoOuter .videoCommentOuter .commentOuter .seperate .replyListBox .inputBox {
+.videoOuter .videoCommentOuter .commentOuter .commentContainer .contentBox {
+  flex: 1;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  position: relative;
-  top: 0;
-  margin-left: 10px;
-  flex-grow: 1;
+  align-items: baseline;
+  color: var(--text-primary);
+  margin-bottom: 10px;
 }
-@media (max-width: 375px) {
-  .videoOuter .videoCommentOuter .commentOuter .seperate .replyListBox .inputBox {
-    margin: 0;
-  }
+.videoOuter .videoCommentOuter .commentOuter .commentContainer .contentBox .textContent {
+  display: flex;
 }
-.videoOuter .videoCommentOuter .commentOuter .seperate .replyListBox .inputBox .userBox {
+.videoOuter .videoCommentOuter .commentOuter .commentContainer .contentBox .textContent .responseTo {
+  color: #8bc6ec;
+  margin-right: 10px;
+}
+.videoOuter .videoCommentOuter .commentOuter .commentContainer .contentBox .thumbs {
+  display: flex;
+  gap: 10px;
+  margin: 5px 0 10px;
+}
+.videoOuter .videoCommentOuter .commentOuter .commentContainer .contentBox .thumbs .far,
+.videoOuter .videoCommentOuter .commentOuter .commentContainer .contentBox .thumbs .fas {
+  cursor: pointer;
+}
+.videoOuter .videoCommentOuter .commentOuter .commentContainer .contentBox .replyBox {
   display: flex;
   flex-direction: row;
   align-items: center;
-  margin-top: 5px;
-  color: var(--text-secondary);
+  justify-content: center;
+  margin-top: 15px;
+  padding-bottom: 10px;
 }
-.videoOuter .videoCommentOuter .commentOuter .seperate .replyListBox .inputBox .userBox .floor {
-  border: solid rgb(87, 87, 87) 2px;
-  border-radius: 5px;
-  margin-right: 5px;
-  background: rgba(138, 161, 175, 0.8);
-  color: white;
-  text-shadow: 1px 1px 3px black;
-  padding: 0px 2px;
+.videoOuter .videoCommentOuter .commentOuter .commentContainer .contentBox .replyBox .reply {
+  padding: 5px;
+  height: 100%;
 }
-.videoOuter .videoCommentOuter .commentOuter .seperate .replyListBox .inputBox .userBox .user {
-  font-weight: bold;
-  font-size: 18px;
+.videoOuter .videoCommentOuter .commentOuter .commentContainer .contentBox .replyBox .btnContainer {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  gap: 10px;
 }
-.videoOuter .videoCommentOuter .commentOuter .seperate .replyListBox .inputBox .userBox .date {
-  position: relative;
-  top: 1px;
-  margin: 0 5px;
-  font-size: 15px;
+.videoOuter .videoCommentOuter .commentOuter .viewMoreContainer {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+  white-space: nowrap;
 }
-.videoOuter .videoCommentOuter .commentOuter .seperate .replyListBox .inputBox .msg {
-  color: var(--text-primary);
+.videoOuter .videoCommentOuter .commentOuter .viewMoreContainer .content {
+  display: flex;
+  align-items: center;
+  gap: 20px;
 }
-.videoOuter .videoCommentOuter .commentOuter .seperate .replyListBox .inputBox .thumbs {
-  color: var(--text-secondary);
+.videoOuter .videoCommentOuter .commentOuter .viewMoreContainer .content .fa.fa-caret-down {
+  flex-basis: 1%;
+  line-height: 30px;
 }
-.videoOuter .videoCommentOuter .commentOuter .seperate .replyListBox .inputBox .thumbs .like {
-  cursor: pointer;
+.videoOuter .videoCommentOuter .commentOuter .viewMoreContainer .content .text {
+  line-height: 30px;
+  margin-right: 20px;
 }
-.videoOuter .videoCommentOuter .commentOuter .seperate .replyListBox .inputBox .thumbs .dislike {
-  cursor: pointer;
-  margin: 0 20px;
-}
-.videoOuter .videoCommentOuter .commentOuter .seperate .replyListBox .inputBox .thumbs .replyTrigger {
-  background: none;
-}
-.videoOuter .videoCommentOuter .commentOuter .seperate .replyListBox .inputBox .thumbs .deleteTrigger {
-  margin-left: 5px;
-  background: none;
-  color: var(--text-secondary);
-}
-.videoOuter .videoCommentOuter .commentOuter .seperate .replyListBox .inputBox .replyInput {
-  border: solid rgba(111, 131, 111, 0.8);
-  border-radius: 10px;
-  overflow: hidden;
-}
-.videoOuter .videoCommentOuter .commentOuter .seperate .replyListBox .inputBox .replyInput input {
-  border: none;
-  padding: 0 10px;
-}
-.videoOuter .videoCommentOuter .commentOuter .seperate .replyListBox .inputBox .replyInput input:focus {
-  outline: none;
-}
-.videoOuter .videoCommentOuter .commentOuter .seperate .replyListBox .inputBox .replyInput button {
-  padding: 0 10px;
-  background: silver;
-  color: white;
-  text-shadow: 1px 1px 2px black;
-}
-.videoOuter .videoCommentOuter .commentOuter .seperate .replyListBox .inputBox .replyInput button:hover {
-  background: rgba(111, 131, 111, 0.8);
+.videoOuter .videoCommentOuter .commentOuter .replyContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 10px;
 }
 
 .watchHistoryOuter {
@@ -1781,7 +1667,7 @@ form .formGroup input {
   border-width: 1px;
   border-radius: 10px;
   background-color: #8bc6ec;
-  background-image: linear-gradient(135deg, #8bc6ec 0%, #9599e2 100%);
+  background-image: linear-gradient(135deg, var(--mainColor) 0%, #9599e2 100%);
   transition: box-shadow 0.3s ease, transform 0.15s ease;
   box-shadow: 0 0 1px #888, 0 1px 0 #fff, 0 6px 0 #c0c0c0;
 }
@@ -1790,6 +1676,9 @@ form .formGroup input {
   transform: translateY(2px);
   color: white;
   text-shadow: 0 0 3px white;
+}
+.customButton:hover .fa.fa-caret-down {
+  color: white;
 }
 .customButton:active {
   box-shadow: 0 0 1px #888, 0 1px 0 #fff, 0 0 0 #c0c0c0;

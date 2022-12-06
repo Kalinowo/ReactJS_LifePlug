@@ -77,21 +77,23 @@ export default function Profile(props) {
                     onClick={updateNameTrigger}
                   />
                 </div>
-                <form
+                <div
                   className="updateNameOuter"
                   style={
                     updateNameBtn ? { display: "block" } : { display: "none" }
                   }
                   onSubmit={(e) => e.preventDefault()}
                 >
-                  <input
-                    className="updateForm"
-                    value={updateName}
-                    onChange={(e) => setUpdateName(e.target.value)}
-                    placeholder="請輸入名稱..."
-                  />
-                  <CustomButton children="OK" onClick={updatedName} />
-                </form>
+                  <div className="updateNameContainer">
+                    <input
+                      className="updateForm"
+                      value={updateName}
+                      onChange={(e) => setUpdateName(e.target.value)}
+                      placeholder="請輸入名稱..."
+                    />
+                    <CustomButton children="OK" onClick={updatedName} />
+                  </div>
+                </div>
                 <div className="profileName">職位：{userInfo[0].role}</div>
               </div>
             )}

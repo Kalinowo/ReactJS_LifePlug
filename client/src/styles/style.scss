@@ -1,4 +1,5 @@
 :root {
+  --mainColor: #8bc6ec;
   --background: #ffffff;
   --background-secondary: #ffffff;
   --background-tertiary: #2830487c;
@@ -29,6 +30,7 @@
 
 body {
   font-family: "NTR", sans-serif;
+  background: black;
 }
 
 a {

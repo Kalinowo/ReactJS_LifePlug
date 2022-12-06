@@ -1,5 +1,4 @@
 import React from "react";
-import AnimeService from "../../../services/anime.service";
 import { Link } from "react-router-dom";
 
 export default function AnimeSearchPage(props) {

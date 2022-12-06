@@ -15,7 +15,7 @@ export default function Intro(props) {
           {openIntro ? "只顯示部分內容" : "顯示完整內容"}
         </button>
         <div
-          className="intro"
+          className={openIntro ? "intro" : "intro open"}
           style={openIntro ? null : { maxHeight: "20px" }}
           onClick={() => setOpenIntro(!openIntro)}
         >

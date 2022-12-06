@@ -14,7 +14,7 @@
   border-width: 1px;
   border-radius: 10px;
   background-color: #8bc6ec;
-  background-image: linear-gradient(135deg, #8bc6ec 0%, #9599e2 100%);
+  background-image: linear-gradient(135deg, var(--mainColor) 0%, #9599e2 100%);
   transition: box-shadow 0.3s ease, transform 0.15s ease;
   box-shadow: 0 0 1px #888, 0 1px 0 #fff, 0 6px 0 #c0c0c0;
 
@@ -24,6 +24,10 @@
     transform: translateY(2px);
     color: white;
     text-shadow: 0 0 3px white;
+  }
+
+  &:hover .fa.fa-caret-down {
+    color: white;
   }
 
   &:active {

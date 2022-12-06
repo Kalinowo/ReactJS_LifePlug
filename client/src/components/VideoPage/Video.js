@@ -1,20 +1,21 @@
 import React, { useRef } from "react";
 import { GlobalContext } from "../../Context/GlobalState";
-import NavbarTemplate from "../Nav/NavTemplate";
 import AnimeService from "../../services/anime.service";
+import CommentService from "../../services/comment.service";
 import HistoryService from "../../services/history.service";
 import UploadEpisode from "../AdminPower/UploadEpisode";
 import YouTube from "react-youtube";
 import { useNavigate, useParams, Link } from "react-router-dom";
 
 import Intro from "./Intro";
-import Comment from "./Comment";
+import Comment from "./Sections/Comment";
 
 export default function Video(props) {
   const { pop, setPop, theme } = React.useContext(GlobalContext);
   const [anime, setAnime] = React.useState(null);
   const [lastWatch, setLastWatch] = React.useState(null);
   const [forceRefresh, setForceRefresh] = React.useState(0);
+  const [commentLists, setCommentLists] = React.useState([]);
   let navigate = useNavigate();
   let params = useParams();
   let animeLink = params.animeLink;
@@ -27,8 +28,18 @@ export default function Video(props) {
       remoteControl.current = data.data[0].episode[params.episode - 1];
       setAnime(data.data);
     });
+
     //eslint-disable-next-line
-  }, [forceRefresh, params.episode]);
+  }, [forceRefresh]);
+
+  React.useEffect(() => {
+    if (anime) {
+      let ep = anime[0].title + "[" + params.episode + "]";
+      CommentService.getComment(ep).then((res) => {
+        setCommentLists(res.data);
+      });
+    }
+  }, [anime]);
 
   if (remoteControl.current) {
     var videoCode = remoteControl.current.split("v=")[1].split("&")[0];
@@ -140,98 +151,113 @@ export default function Video(props) {
     //eslint-disable-next-line
   }, [anime]);
 
+  const updateComment = (newComment) => {
+    setCommentLists(commentLists.concat(newComment));
+  };
+
   return (
-    <React.Fragment>
+    <>
       {anime !== null && (
         <div className="videoOuter" data-theme={theme}>
-          <div className="videoTitle">{anime[0].title}</div>
-          <div className="embedOuter">
-            {anime[0].episode.length !== 0 && (
-              <YouTube
-                videoId={videoCode}
-                className="embedStyle"
-                opts={opts}
-                onStateChange={youtubeState}
-              />
-            )}
-          </div>
-          <div className="episodeTitle">
-            {anime[0].title}[{params.episode}]
-          </div>
-          <div className="episodeOuter">
-            {anime[0].episode.map((episode, index) => {
-              return (
-                <React.Fragment key={index}>
-                  <div className="episodeBox">
-                    {currentUser && currentUser.user.role === "Admin" && (
-                      <div className="removeBox">
-                        <div
-                          className="remove"
-                          onClick={() => deleteEpisode(episode)}
-                        >
-                          Remove
+          <div className="videoContainer">
+            <div className="videoTitle">{anime[0].title}</div>
+            <div className="embedOuter">
+              {anime[0].episode.length !== 0 && (
+                <YouTube
+                  videoId={videoCode}
+                  className="embedStyle"
+                  opts={opts}
+                  onStateChange={youtubeState}
+                />
+              )}
+            </div>
+            <div className="episodeTitle">
+              {anime[0].title}[{params.episode}]
+            </div>
+            <div className="episodeOuter">
+              {anime[0].episode.map((episode, index) => {
+                return (
+                  <React.Fragment key={index}>
+                    <div className="episodeBox">
+                      {currentUser && currentUser.user.role === "Admin" && (
+                        <div className="removeBox">
+                          <div
+                            className="remove"
+                            onClick={() => deleteEpisode(episode)}
+                          >
+                            Remove
+                          </div>
+                          <i className="fas fa-times"></i>
                         </div>
-                        <i className="fas fa-times"></i>
-                      </div>
-                    )}
-                    <Link to={`/LifePlug/video/${animeLink}/${index + 1}`}>
-                      <button
-                        className={
-                          lastWatch !== null
-                            ? lastWatch[0].episode === index + 1
-                              ? "episodeBtn lastWatch"
+                      )}
+                      <Link to={`/LifePlug/video/${animeLink}/${index + 1}`}>
+                        <button
+                          className={
+                            lastWatch !== null
+                              ? lastWatch[0].episode === index + 1
+                                ? "episodeBtn lastWatch"
+                                : "episodeBtn"
                               : "episodeBtn"
-                            : "episodeBtn"
-                        }
-                        style={
-                          episode === remoteControl.current
-                            ? { background: "lightblue" }
-                            : null
-                        }
-                      >
-                        {index + 1}
-                      </button>
-                    </Link>
+                          }
+                          style={
+                            episode === remoteControl.current
+                              ? { background: "lightblue" }
+                              : null
+                          }
+                        >
+                          {index + 1}
+                        </button>
+                      </Link>
+                    </div>
+                  </React.Fragment>
+                );
+              })}
+              {pop === true && (
+                <UploadEpisode
+                  Anime={anime}
+                  setForceRefresh={setForceRefresh}
+                />
+              )}
+              {currentUser && currentUser.user.role === "Admin" && (
+                <div className="uploadEpisodeOuter">
+                  <div className="circle" onClick={() => setPop(true)}>
+                    <i className="fas fa-plus"></i>
                   </div>
-                </React.Fragment>
-              );
-            })}
-            {pop === true && (
-              <UploadEpisode Anime={anime} setForceRefresh={setForceRefresh} />
-            )}
-            {currentUser && currentUser.user.role === "Admin" && (
-              <div className="uploadEpisodeOuter">
-                <div className="circle" onClick={() => setPop(true)}>
-                  <i className="fas fa-plus"></i>
                 </div>
-              </div>
-            )}
-          </div>
-          <div className="videoDetailOuter">
-            <ul className="videoDetailBox">
-              <li>
-                <span>作品類型</span>
-                {anime[0].genre}
-              </li>
-              <li>
-                <span>導演監督</span>
-                {anime[0].director}
-              </li>
+              )}
+            </div>
+            <div className="videoDetailOuter">
+              <ul className="videoDetailBox">
+                <li>
+                  <span>作品類型</span>
+                  {anime[0].genre}
+                </li>
+                <li>
+                  <span>導演監督</span>
+                  {anime[0].director}
+                </li>
 
-              <li>
-                <span>台灣代理</span>
-                {anime[0].agent}
-              </li>
-              <li>
-                <span>製作廠商</span>
-                {anime[0].producer}
-              </li>
-            </ul>
+                <li>
+                  <span>台灣代理</span>
+                  {anime[0].agent}
+                </li>
+                <li>
+                  <span>製作廠商</span>
+                  {anime[0].producer}
+                </li>
+              </ul>
+            </div>
+            <Intro Anime={anime} />
+            <Comment
+              title={anime[0].title}
+              ep={params.episode}
+              refreshFunction={updateComment}
+              commentLists={commentLists}
+              {...props}
+            />
           </div>
-          <Intro Anime={anime} />
-          <Comment title={anime[0].title} ep={params.episode} {...props} />
         </div>
       )}
-    </React.Fragment>
+    </>
   );
 }

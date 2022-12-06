@@ -10,7 +10,7 @@ export default function Button({
 }) {
   return (
     <>
-      <button
+      <div
         className="customButton"
         style={{
           width: width,
@@ -21,7 +21,7 @@ export default function Button({
         onClick={onClick}
       >
         {children}
-      </button>
+      </div>
     </>
   );
 }
